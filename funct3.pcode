@@ -1,0 +1,97 @@
+  'Data Table: 401838
+  loc_404C82: ZeroRetValVar
+  loc_404C86: On Error Resume Next
+  loc_404C8B: LitVarStr var_304, "\"
+  loc_404C90: FStVarCopy
+  loc_404C96: ' Referenced from: 404DD1
+  loc_404C98: ImpAdCallFPR4 Thumbs   .db.address_80000256
+  loc_404C9F: LitI4 1
+  loc_404CA4: ILdRf arg_C
+  loc_404CA7: FLdRfVar var_314
+  loc_404CAA: ImpAdCallFPR4 Thumbs   .db.address_8000026B
+
+  ' Begin If ; Evaluate conditions
+  loc_404CAF: FLdRfVar var_314 ' push var_314
+  loc_404CB2: FLdRfVar var_2F4 ' push var_2F4
+  loc_404CB5: NeVarBool        ' not var_2F4, var_314 ; NOT together the two variables above
+
+  loc_404CBA: BranchF loc_404CCF ' jz loc_404CCF      ; Jump if false (0 -> false; 1 -> true)
+  loc_404CBF: ILdRfDarg          ' push
+  loc_404CC5: FLdRfVar var_2F4
+  loc_404CC8: ConcatVar var_314
+  loc_404CCC: IStDarg arg_C
+  loc_404CCF: End If
+
+  loc_404CD1: FLdRfVar var_2E4
+  loc_404CD4: FLdRfVar var_47C
+  loc_404CD7: CRec2Ansi arg_1E
+  loc_404CDA: FLdRfVar var_47C
+  loc_404CDD: ILdRfDarg
+  loc_404CE3: LitVarStr var_304, "*"
+  loc_404CE8: ConcatVar var_314
+  loc_404CEC: CStrVarVal var_338
+  loc_404CF0: FLdRfVar var_33C
+  loc_404CF3: CStr2Ansi
+  loc_404CF4: ILdRf var_33C
+  loc_404CF7: ImpAdCallI2 FindFirstFile(, )
+  loc_404CFC: FStR4 var_480
+  loc_404CFF: SetLastSystemError
+  loc_404D00: FLdRfVar var_47C
+  loc_404D03: FLdRfVar var_2E4
+  loc_404D06: CRec2Uni arg_1E
+  loc_404D09: ILdRf var_480
+  loc_404D0C: CVarI4
+
+  loc_404D10: FStVar var_490
+  loc_404D20: FLdRfVar var_314
+  loc_404D23: FLdRfVar var_2E4
+  loc_404D26: CVarRef
+  loc_404D2B: ILdRf arg_C
+  loc_404D2E: FLdRfVar var_2B8
+  loc_404D31: LdFixedStr
+  loc_404D34: PopTmpLdAdStr
+  loc_404D38: CVarRef
+  loc_404D3D:  = funct4(, , )
+  loc_404D42: ILdRf var_338
+  loc_404D45: FLdRfVar var_2B8
+  loc_404D48: StFixedStr
+  loc_404D4B: FFree1Str var_338
+  loc_404D51: ' Referenced from: 404DB7
+  loc_404D53: FLdRfVar var_2E4
+  loc_404D56: FLdRfVar var_5E0
+  loc_404D59: CRec2Ansi arg_1E
+  loc_404D5C: FLdRfVar var_5E0
+  loc_404D5F: FLdRfVar var_490
+  loc_404D62: CI4Var
+  loc_404D64: ImpAdCallI2 FindNextFile(, )
+  loc_404D69: FStR4 var_480
+  loc_404D6C: SetLastSystemError
+  loc_404D6D: FLdRfVar var_5E0
+  loc_404D70: FLdRfVar var_2E4
+  loc_404D73: CRec2Uni arg_1E
+  loc_404D76: ILdRf var_480
+  loc_404D79: LitI4 0
+  loc_404D7E: NeI4
+  loc_404D7F: BranchF loc_404DBA
+  loc_404D84: FLdRfVar var_314
+  loc_404D87: FLdRfVar var_2E4
+  loc_404D8A: CVarRef
+  loc_404D8F: ILdRf arg_C
+  loc_404D92: FLdRfVar var_2B8
+  loc_404D95: LdFixedStr
+  loc_404D98: PopTmpLdAdStr
+  loc_404D9C: CVarRef
+  loc_404DA1:  = funct4(, , )
+  loc_404DA6: ILdRf var_338
+  loc_404DA9: FLdRfVar var_2B8
+  loc_404DAC: StFixedStr
+  loc_404DAF: FFree1Str var_338
+  loc_404DB7: Branch loc_404D51
+  loc_404DBA: End If
+  loc_404DBC: FLdRfVar var_490
+  loc_404DBF: CI4Var
+  loc_404DC1: ImpAdCallFPR4 FindClose()
+  loc_404DC6: SetLastSystemError
+  loc_404DC9: ExitProcCbHresult
+  loc_404DD1: Branch loc_404C96
+  loc_404DD6: ExitProcCbHresult
