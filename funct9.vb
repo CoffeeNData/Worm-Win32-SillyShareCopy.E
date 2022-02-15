@@ -2,7 +2,7 @@
 Public Function funct9() '404A00 ' WARNING: The renamings made here are pure speculation
   'Data Table: 401838
   ' Variable declaration
-  Dim var_B4 As Variant
+  Dim splitted_path As Variant
   Dim autoexec_path2 As String
   Dim autoexec_s1 As String
   Dim autoexec_s2 As String
@@ -11,7 +11,11 @@ Public Function funct9() '404A00 ' WARNING: The renamings made here are pure spe
   loc_4048B2: On Error Resume Next ' Ignore errors and continue
 
   loc_4048BF: dll_path = funct1(0) ' Get DLL current path
-  loc_4048E2: var_B4 = InStr(1, dll_path, ":", 0)
+  ' InStr([ start ], string1, string2, [ compare ])
+  ' Get the path without specifying the drive.
+  ' Examples: C:\Windows\System32 -> \Windows\System32
+  '              C:\AppData\MyApp -> \AppData\MyApp
+  loc_4048E2: splitted_path = InStr(1, dll_path, ":", 0) ' Split path
   loc_4048EE: Thumbs   .db.address_80000269 ' Call the DLL
   loc_4048FF: autoexec_path = dll_path & "Autoexec.bat" 'Variant
 
