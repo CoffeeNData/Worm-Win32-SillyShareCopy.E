@@ -1,7 +1,6 @@
+' Drop 2 copies on selected path
 Public Function funct8(a) '4054C0
   'Data Table: 401838
-  ' This function will deploy the files in the selected path
-
   ' Note: <> means a logical NOT operator
 
   ' Define vars

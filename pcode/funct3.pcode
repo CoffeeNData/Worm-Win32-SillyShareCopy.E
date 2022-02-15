@@ -1,24 +1,27 @@
+  ' LEGEND:
+  ' FLdRfVar a ; Push variable a onto the stack
+  
   'Data Table: 401838
   loc_404C82: ZeroRetValVar
   loc_404C86: On Error Resume Next
-  loc_404C8B: LitVarStr var_304, "\"
+  loc_404C8B: LitVarStr var_304, "\" ' var_304 = "\"
   loc_404C90: FStVarCopy
   loc_404C96: ' Referenced from: 404DD1
   loc_404C98: ImpAdCallFPR4 Thumbs   .db.address_80000256
   loc_404C9F: LitI4 1
   loc_404CA4: ILdRf arg_C
-  loc_404CA7: FLdRfVar var_314
+  loc_404CA7: FLdRfVar path
   loc_404CAA: ImpAdCallFPR4 Thumbs   .db.address_8000026B
 
   ' Begin If ; Evaluate conditions
-  loc_404CAF: FLdRfVar var_314 ' push var_314
-  loc_404CB2: FLdRfVar var_2F4 ' push var_2F4
-  loc_404CB5: NeVarBool        ' not var_2F4, var_314 ; NOT together the two variables above
+  loc_404CAF: FLdRfVar path    ' push path
+  loc_404CB2: FLdRfVar var_2F4 ' push var_2F4         ; var_2F4 hasnt been initialized yet. (Maybe var_2F4=0 for stack reasons?)
+  loc_404CB5: NeVarBool        ' not var_2F4, path    ; NOT together the two variables above
 
   loc_404CBA: BranchF loc_404CCF ' jz loc_404CCF      ; Jump if false (0 -> false; 1 -> true)
-  loc_404CBF: ILdRfDarg          ' push
+  loc_404CBF: ILdRfDarg
   loc_404CC5: FLdRfVar var_2F4
-  loc_404CC8: ConcatVar var_314
+  loc_404CC8: ConcatVar path
   loc_404CCC: IStDarg arg_C
   loc_404CCF: End If
 
@@ -27,13 +30,16 @@
   loc_404CD7: CRec2Ansi arg_1E
   loc_404CDA: FLdRfVar var_47C
   loc_404CDD: ILdRfDarg
-  loc_404CE3: LitVarStr var_304, "*"
-  loc_404CE8: ConcatVar var_314
-  loc_404CEC: CStrVarVal var_338
-  loc_404CF0: FLdRfVar var_33C
-  loc_404CF3: CStr2Ansi
-  loc_404CF4: ILdRf var_33C
-  loc_404CF7: ImpAdCallI2 FindFirstFile(, )
+  loc_404CE3: LitVarStr var_304, "*" ' var_304 = "*"
+  loc_404CE8: ConcatVar path
+  loc_404CEC: CStrVarVal var_338 ' push var_338
+
+  loc_404CF0: FLdRfVar search_path  ' push search_path ; <- C String
+  loc_404CF3: CStr2Ansi         ' pop and cast to ASCII from UNICODE
+  loc_404CF4: ILdRf search_path     ' ?? search_path ; <- ANSI String
+
+  loc_404CF7: ImpAdCallI2 FindFirstFile(, ) ' call FindFirstFile(search_path, var_338) ; What is var_338 ???
+
   loc_404CFC: FStR4 var_480
   loc_404CFF: SetLastSystemError
   loc_404D00: FLdRfVar var_47C
@@ -41,9 +47,8 @@
   loc_404D06: CRec2Uni arg_1E
   loc_404D09: ILdRf var_480
   loc_404D0C: CVarI4
-
   loc_404D10: FStVar var_490
-  loc_404D20: FLdRfVar var_314
+  loc_404D20: FLdRfVar path
   loc_404D23: FLdRfVar var_2E4
   loc_404D26: CVarRef
   loc_404D2B: ILdRf arg_C
@@ -73,7 +78,7 @@
   loc_404D79: LitI4 0
   loc_404D7E: NeI4
   loc_404D7F: BranchF loc_404DBA
-  loc_404D84: FLdRfVar var_314
+  loc_404D84: FLdRfVar path
   loc_404D87: FLdRfVar var_2E4
   loc_404D8A: CVarRef
   loc_404D8F: ILdRf arg_C
