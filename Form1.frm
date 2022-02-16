@@ -58,6 +58,8 @@ Private Declare Function FindFirstFile Lib "kernel32" Alias "FindFirstFileA" (By
 Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 
 
+' TO DO: CHANGE DLL CALLINGS TO ThumbsDLL.XXX
+
 Private Sub Timer1_Timer() '4034F4
   'Data Table: 401838
   loc_4034C7: var_94 = funct5()

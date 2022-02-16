@@ -1,0 +1,126 @@
+  'Data Table: 401838
+  loc_40577E: ZeroRetValVar
+  loc_405782: On Error Resume Next
+  loc_405787: FLdRfVar var_9C
+  loc_40578A: FLdRfVar var_98
+  loc_40578D: ImpAdLdRf MemVar_407350
+  loc_405790: NewIfNullPr Me
+  loc_405793:  = Me.Global.App
+  loc_405798: FLdPr var_98
+  loc_40579B:  = App.Path
+  loc_4057A0: FLdZeroAd var_9C
+  loc_4057A3: CVarStr var_AC
+  loc_4057A6: FLdRfVar var_BC
+  loc_4057A9: ImpAdCallFPR4 Thumbs   .db.address_80000210
+  loc_4057AE: FLdRfVar var_BC
+  loc_4057B1: FStVar var_CC
+  loc_4057B5: FFree1Ad var_98
+  loc_4057BD: FLdRfVar var_CC
+  loc_4057C0: FLdRfVar var_BC
+  loc_4057C3: LitVarI2 var_AC, 0
+  loc_4057C8:  = funct1()
+  loc_4057CD: FLdRfVar var_BC
+  loc_4057D0: EqVarBool
+  loc_4057D9: BranchF loc_4057E4
+  loc_4057DE: ExitProcCbHresult
+  loc_4057E4: End If
+  loc_4057E6: LitVarStr var_DC, "\"
+  loc_4057EB: FStVarCopy
+  loc_4057F1: LitI4 1
+  loc_4057F6: FLdRfVar var_CC
+  loc_4057F9: FLdRfVar var_AC
+  loc_4057FC: ImpAdCallFPR4 Thumbs   .db.address_8000026B
+  loc_405801: FLdRfVar var_AC
+  loc_405804: FLdRfVar var_FC
+  loc_405807: NeVarBool
+  loc_40580C: BranchF loc_40581F
+  loc_405811: FLdRfVar var_CC
+  loc_405814: FLdRfVar var_FC
+  loc_405817: ConcatVar var_AC
+  loc_40581B: FStVar var_CC
+  loc_40581F: End If
+  loc_405821: FLdRfVar var_9C
+  loc_405824: FLdRfVar var_98
+  loc_405827: ImpAdLdRf MemVar_407350
+  loc_40582A: NewIfNullPr Me
+  loc_40582D:  = Me.Global.App
+  loc_405832: FLdPr var_98
+  loc_405835:  = App.EXEName
+  loc_40583A: FLdZeroAd var_9C
+  loc_40583D: CVarStr var_AC
+  loc_405840: FLdRfVar var_BC
+  loc_405843: ImpAdCallFPR4 Thumbs   .db.address_80000210
+  loc_405848: FLdRfVar var_BC
+  loc_40584B: FStVar var_10C
+  loc_40584F: FFree1Ad var_98
+  loc_405857: FLdRfVar var_10C
+  loc_40585A: LitVarStr var_DC, "Thumbs"
+  loc_40585F: FStVarCopyObj var_AC
+  loc_405862: FLdRfVar var_AC
+  loc_405865: FLdRfVar var_BC
+  loc_405868: ImpAdCallFPR4 Thumbs   .db.address_80000210
+  loc_40586D: FLdRfVar var_BC
+  loc_405870: EqVarBool
+  loc_405879: BranchF loc_4058AE
+  loc_40587E: LitI4 1
+  loc_405883: FLdRfVar var_CC
+  loc_405886: LitVarStr var_DC, ":"
+  loc_40588B: LitI4 0
+  loc_405890: FnInStr4Var
+  loc_405894: CI4Var
+  loc_405896: FLdRfVar var_CC
+  loc_405899: FLdRfVar var_BC
+  loc_40589C: ImpAdCallFPR4 Thumbs   .db.address_80000269
+  loc_4058A1: FLdRfVar var_BC
+  loc_4058A4: FStVar var_11C
+  loc_4058AB: Branch loc_4058E0
+  loc_4058AE: End If
+  loc_4058B2: FLdRfVar var_CC
+  loc_4058B5: FLdRfVar var_10C
+  loc_4058B8: FnLenVar var_AC
+  loc_4058BC: LitVarI2 var_DC, 1
+  loc_4058C1: SubVar var_BC
+  loc_4058C5: CI4Var
+  loc_4058C7: FLdRfVar var_10C
+  loc_4058CA: FLdRfVar var_EC
+  loc_4058CD: ImpAdCallFPR4 Thumbs   .db.address_80000269
+  loc_4058D2: FLdRfVar var_EC
+  loc_4058D5: ConcatVar var_12C
+  loc_4058D9: FStVar var_11C
+  loc_4058E0: ' Referenced from: 4058AB
+  loc_4058E4: FLdRfVar var_AC
+  loc_4058E7:  = funct2()
+  loc_4058F1: FLdRfVar var_AC
+
+  loc_4058F4: FLdRfVar var_11C
+  loc_4058F7:  = funct3()
+  loc_405901: FLdRfVar shellexec_target ' Maybe ( shellexec_target = var_11C = funct3) because of FLdRfVar instruction?
+                                        ' This will make sense if funct3() returns the path to an executable
+
+  loc_405904: FLdPrThis
+  loc_405905: Call {0D608C23-AE41-11DB-A47CB713666A9177}.Method_arg_58 ()
+  loc_40590A: LitI4 1
+  loc_40590F: LitStr vbNullString
+  loc_405912: FLdRfVar var_140
+  loc_405915: CStr2Ansi
+  loc_405916: ILdRf var_140
+  loc_405919: LitStr vbNullString
+  loc_40591C: FLdRfVar var_13C
+  loc_40591F: CStr2Ansi
+  loc_405920: ILdRf var_13C
+  loc_405923: FLdRfVar var_11C
+  loc_405926: CStrVarVal var_134
+  loc_40592A: FLdRfVar var_138
+  loc_40592D: CStr2Ansi
+  
+  loc_40592E: ILdRf var_138
+  loc_405931: LitStr "open"
+  loc_405934: FLdRfVar var_9C
+  loc_405937: CStr2Ansi
+  loc_405938: ILdRf var_9C
+  loc_40593B: ILdRf shellexec_target
+  loc_40593E: ImpAdCallFPR4 ShellExecute(, , , , , )
+
+  loc_405943: SetLastSystemError
+  loc_405953: End
+  loc_405957: ExitProcCbHresult

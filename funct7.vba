@@ -1,4 +1,4 @@
-Public Function funct7(a) '403EC8 ' Disk drive stuff?
+Public Function funct7(a) '403EC8 ' Maybe return other drives to replicate to them?
   'Data Table: 401838
   'Link to opcode list: https://www.dotfix.net/doc/vb_pcode_table.htm
 
@@ -36,7 +36,7 @@ Public Function funct7(a) '403EC8 ' Disk drive stuff?
   loc_403EB0:   End If
   loc_403EB0: End If
   
-  loc_403EB6: var_94 = a 'Variant. var_94 = a = drive_type = drive.drivetype
+  loc_403EB6: drive_type2 = a 'Variant. drive_type2 = a = drive_type = drive.drivetype
   loc_403EBA: ' Referenced from: 403DEA
   loc_403EBA: funct7 = drive ' This will be overwritten in the next instruction
   loc_403EC0: funct7 = "scripting.filesystemobject" ' Return "scripting.filesystemobject"

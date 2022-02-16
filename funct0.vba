@@ -55,15 +55,21 @@ Public Function funct0() '405960
               ' Call (to the given ProgID ? )
               ' [ Call ] procedureName [ (argumentList) ]
   loc_405905: Call {0D608C23-AE41-11DB-A47CB713666A9177}.Method_arg_58 (
-                      var_130,       ' var_130 has not been initialized yet
-                      startup_path2, ' Path to the startup folder
+                      shellexec_target,       ' shellexec_target has not been initialized yet
+                      startup_path2,    ' Path to the startup folder
                       CLng(startup_path), ' (Len(startup_path2) - 1) -> Path lenght, begin counting from 0. Long type casting.
-                      startup_path4, ' Path to the startup folder. "\" appended.
-                      startup_path,  ' (Len(startup_path2) - 1) -> Path lenght, begin counting from 0. Integer type?
-                      startup_path4, ' Path to the startup folder. "\" appended.
+                      startup_path4,    ' Path to the startup folder. "\" appended.
+                      startup_path,     ' (Len(startup_path2) - 1) -> Path lenght, begin counting from 0. Integer type?
+                      startup_path4,    ' Path to the startup folder. "\" appended.
                       CLng(funct3(startup_path3)),
                       funct3(startup_path3)
                     )
+
+                          '  loc_4058F4: FLdRfVar var_11C
+                          '  loc_4058F7:  = funct3()
+                          '  loc_405901: FLdRfVar shellexec_target ' Maybe ( shellexec_target = var_11C = funct3) because of FLdRfVar instruction?
+                          '                                        ' Because funct3() returns a file descriptor?
+                          '  So shellexec_target = var_11C = funct3()
 
               ' Shell.ShellExecute( _                ' Execute a shell command
               '   ByVal sFile As BSTR, _             ' Name of the executable
@@ -72,7 +78,7 @@ Public Function funct0() '405960
               '   [ ByVal vOperation As Variant ], _ ' Operation to perform (what does this mean?)
               '   [ ByVal vShow As Variant ] _       ' Specify how to show the window (1 -> Open with a normal window)
               ' ) As Integer
-  loc_40593E: ShellExecute(var_130, "open", CStr(startup_path3), vbNullString, vbNullString, 1)
+  loc_40593E: ShellExecute(shellexec_target, "open", CStr(startup_path3), vbNullString, vbNullString, 1)
   loc_405953: End
   loc_405957: funct0 = startup_path2 ' Return startup_path2 = startup_path
 End Function

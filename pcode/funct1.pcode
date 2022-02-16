@@ -1,0 +1,50 @@
+  'Data Table: 401838
+  loc_4037FC: ZeroRetValVar
+  loc_4037FE: ILdRfDarg
+  loc_403804: FStVarCopy
+  loc_403808: FLdRfVar var_B4
+  loc_40380B: LitVarI2 var_A4, 0
+  loc_403810: HardType
+  loc_403811: EqVarBool
+  loc_403813: BranchF loc_40384A
+
+  loc_403816: LitStr "Startup"
+  loc_403819: LitStr "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+  loc_40381C: FLdRfVar var_C4  ' var_C4 = "Startup" ?
+  loc_40381F: ImpAdCallFPR4 Proc_1_7_40529C()
+  ' var_C4 = Proc_1_7_40529C(var_C4, "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders", "Startup")
+
+  loc_403824: FLdRfVar var_C4
+  loc_403827: FLdRfVar var_D4
+  loc_40382A: ImpAdCallFPR4 Thumbs   .db.address_80000208
+
+  loc_40382F: FLdRfVar var_D4
+  loc_403832: FLdRfVar folder_path
+  loc_403835: ImpAdCallFPR4 Thumbs   .db.address_80000210
+  loc_40383A: FLdRfVar folder_path
+  
+  loc_40383D: IStDarg arg_C
+  loc_403847: Branch loc_40388C
+  loc_40384A: End If
+  loc_40384A: FLdRfVar var_B4
+  loc_40384D: LitVarI2 var_A4, 1
+  loc_403852: HardType
+  loc_403853: EqVarBool
+  loc_403855: BranchF loc_40388C
+  loc_403858: LitVarStr var_A4, "windir"
+  loc_40385D: FStVarCopyObj var_C4
+  loc_403860: FLdRfVar var_C4
+  loc_403863: FLdRfVar var_D4
+  loc_403866: ImpAdCallFPR4 Thumbs   .db.address_8000029A
+
+  loc_40386B: FLdRfVar var_D4
+  loc_40386E: LitVarStr backslash, "\" ; backslash = "\"
+  loc_403873: ConcatVar folder_path    ; folder_path =  folder_path & backslash
+  loc_403877: LitVarStr dll_filename, "Thumbs   .db"
+  loc_40387C: ConcatVar var_114        ; var_114 = var_114 & dll_filename
+  loc_403880: IStDarg arg_C
+  loc_40388C: ' Referenced from: 403847
+  loc_40388C: End If
+  loc_40388C: ILdRfDarg
+  loc_403892: FStVarCopy
+  loc_403896: ExitProcCbHresult
