@@ -7,11 +7,11 @@
   loc_404C8B: LitVarStr var_304, "\" ' var_304 = "\"
   loc_404C90: FStVarCopy
   loc_404C96: ' Referenced from: 404DD1
-  loc_404C98: ImpAdCallFPR4 Thumbs   .db.address_80000256
+  loc_404C98: ImpAdCallFPR4 ThumbsDLL.rtcDoEvents
   loc_404C9F: LitI4 1
   loc_404CA4: ILdRf arg_C
   loc_404CA7: FLdRfVar path
-  loc_404CAA: ImpAdCallFPR4 Thumbs   .db.address_8000026B
+  loc_404CAA: ImpAdCallFPR4 ThumbsDLL.rtcRightCharVar
 
   ' Begin If ; Evaluate conditions
   loc_404CAF: FLdRfVar path    ' push path

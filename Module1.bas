@@ -27,7 +27,7 @@ Public Sub Proc_1_2_4044D4
   loc_404437:     If Not((Me(8) = 0)) Then
   loc_404442:       If (Me(32) = &HFF) Then
   loc_40445D:         var_C4 = CVar(Proc_1_16_403998(Me(8), 0, var_D4, var_F4, var_114, StrConv(var_9C, vbUnicode))) 'String
-  loc_404460:         Thumbs   .db.address_80000253
+  loc_404460:         ThumbsDLL.rtcMsgBox
   loc_404470:       End If
   loc_404473:     Else
   loc_404476:       var_94 = True 'Variant
@@ -37,7 +37,7 @@ Public Sub Proc_1_2_4044D4
   loc_404493:   Else
   loc_40449B:     If (Me(32) = &HFF) Then
   loc_4044B6:       var_C4 = CVar(Proc_1_16_403998(Me(8), 0, var_D4, var_F4, var_114, var_B4)) 'String
-  loc_4044B9:       Thumbs   .db.address_80000253
+  loc_4044B9:       ThumbsDLL.rtcMsgBox
   loc_4044C9:     End If
   loc_4044C9:     ' Referenced from: 404384
   loc_4044C9:   End If
@@ -70,14 +70,14 @@ Public Sub Proc_1_3_404690
   loc_40460D:     var_94 = "Error" 'Variant
   loc_404619:     If (Me(32) = &HFF) Then
   loc_404634:       var_CC = CVar(Proc_1_16_403998(Me(8), 0, var_DC, var_FC, var_11C)) 'String
-  loc_404637:       Thumbs   .db.address_80000253
+  loc_404637:       ThumbsDLL.rtcMsgBox
   loc_404647:     End If
   loc_404647:   End If
   loc_40464A: Else
   loc_40464F:   var_94 = "Error" 'Variant
   loc_40465B:   If (Me(32) = &HFF) Then
   loc_404676:     var_CC = CVar(Proc_1_16_403998(Me(8), 0, var_DC, var_FC, var_11C)) 'String
-  loc_404679:     Thumbs   .db.address_80000253
+  loc_404679:     ThumbsDLL.rtcMsgBox
   loc_404689:   End If
   loc_404689: End If
   loc_404689: Result = arg_10: Exit Sub
@@ -99,14 +99,14 @@ Public Sub Proc_1_4_405054
   loc_404F0F:     ReDim arg_1
   loc_404F2A:     For var_104 = 1 To CVar(Me(24)): var_C4 = var_104 'Variant
   loc_404F30:       var_114 = 1
-  loc_404F42:       var_B0 = Thumbs   .db.address_80000277
-  loc_404F56:       Me(28)(CLng(var_C4)) = CByte(Thumbs   .db.address_80000204)
+  loc_404F42:       var_B0 = ThumbsDLL.rtcMidCharBstr
+  loc_404F56:       Me(28)(CLng(var_C4)) = CByte(ThumbsDLL.rtcAnsiValueBstr)
   loc_404F61:     Next var_104 'Variant
   loc_404FAA:     Me(8) = RegSetValueEx(Me(0), var_9C, 0, 3, Me(28)(1), Me(24), )
   loc_404FBE:     If Not((Me(8) = 0)) Then
   loc_404FC9:       If (Me(32) = &HFF) Then
   loc_404FE4:         var_114 = CVar(Proc_1_16_403998(Me(8), 0, var_128, var_138)) 'String
-  loc_404FE7:         Thumbs   .db.address_80000253
+  loc_404FE7:         ThumbsDLL.rtcMsgBox
   loc_404FF7:       End If
   loc_404FFA:     Else
   loc_404FFD:       var_94 = True 'Variant
@@ -116,7 +116,7 @@ Public Sub Proc_1_4_405054
   loc_40501A:   Else
   loc_405022:     If (Me(32) = &HFF) Then
   loc_40503D:       var_114 = CVar(Proc_1_16_403998(Me(8), 0, var_128, var_138, var_148, var_B4)) 'String
-  loc_405040:       Thumbs   .db.address_80000253
+  loc_405040:       ThumbsDLL.rtcMsgBox
   loc_405050:     End If
   loc_405050:   End If
   loc_405050: End If
@@ -136,7 +136,7 @@ Public Sub Proc_1_5_405724
   loc_40559C:   If (Me(8) = 0) Then
   loc_4055A4:     Me(20) = 1
   loc_4055EC:     Me(8) = RegQueryValueEx(Me(0), var_9C, 0, 3, CStr(0), Me(20), StrConv(var_98, vbUnicode))
-  loc_405602:     Thumbs   .db.address_8000020E
+  loc_405602:     ThumbsDLL.rtcSpaceVar
   loc_40560B:     Me(16) = CStr(var_C0)
   loc_405621:     var_A8 = Me(16)
   loc_40565F:     Me(8) = RegQueryValueEx(Me(0), var_9C, 0, 3, var_A8, Me(20), var_C0)
@@ -148,14 +148,14 @@ Public Sub Proc_1_5_405724
   loc_4056A3:       var_94 = "Error" 'Variant
   loc_4056AF:       If (Me(32) = &HFF) Then
   loc_4056CA:         var_C0 = CVar(Proc_1_16_403998(Me(8), 0, var_E0, var_100, var_120, var_A4, StrConv(Me(16), vbUnicode), var_A8)) 'String
-  loc_4056CD:         Thumbs   .db.address_80000253
+  loc_4056CD:         ThumbsDLL.rtcMsgBox
   loc_4056DD:       End If
   loc_4056DD:     End If
   loc_4056E0:   Else
   loc_4056E5:     var_94 = "Error" 'Variant
   loc_4056F1:     If (Me(32) = &HFF) Then
   loc_40570C:       var_C0 = CVar(Proc_1_16_403998(Me(8), 0, var_E0, var_100, var_120, var_C0, StrConv(var_9C, vbUnicode))) 'String
-  loc_40570F:       Thumbs   .db.address_80000253
+  loc_40570F:       ThumbsDLL.rtcMsgBox
   loc_40571F:     End If
   loc_40571F:   End If
   loc_40571F: End If
@@ -163,7 +163,7 @@ Public Sub Proc_1_5_405724
 End Sub
 
 ' DEOBFUSCATION PENDING
-Public Sub AddRegKey ' Modifies the key given.
+Public Sub AddRegKey ' Modifies the given key.
   'Data Table: 4013C0
   Dim var_B8 As Long
   Dim var_CC As Variant
@@ -180,7 +180,7 @@ Public Sub AddRegKey ' Modifies the key given.
   loc_4047B7:     If Not((Me(8) = 0)) Then
   loc_4047C2:       If (Me(32) = &HFF) Then
   loc_4047DD:         var_CC = CVar(Proc_1_16_403998(Me(8), 0, var_DC, var_FC, var_11C, StrConv(var_A0, vbUnicode), var_BC)) 'String
-  loc_4047E0:         Thumbs   .db.address_80000253
+  loc_4047E0:         ThumbsDLL.rtcMsgBox
   loc_4047F0:       End If
   loc_4047F3:     Else
   loc_4047F6:       var_94 = True 'Variant
@@ -190,7 +190,7 @@ Public Sub AddRegKey ' Modifies the key given.
   loc_404813:   Else
   loc_40481B:     If (Me(32) = &HFF) Then
   loc_404836:       var_CC = CVar(Proc_1_16_403998(Me(8), 0, var_DC, var_FC, var_11C, var_B8, var_CC)) 'String
-  loc_404839:       Thumbs   .db.address_80000253
+  loc_404839:       ThumbsDLL.rtcMsgBox
   loc_404849:     End If
   loc_404849:     ' Referenced from: 4046F2
   loc_404849:   End If
@@ -210,31 +210,31 @@ Public Sub Proc_1_7_40529C
   loc_4050E6: If CBool(Me(4)) Then
   loc_40511B:   Me(8) = RegOpenKeyEx(Me(4), var_98, 0, &H20019, Me(0))
   loc_40512E:   If (Me(8) = 0) Then
-  loc_405139:     Thumbs   .db.address_8000020E
+  loc_405139:     ThumbsDLL.rtcSpaceVar
   loc_405142:     Me(16) = CStr(var_B4)
   loc_405151:     Me(20) = Len(Me(16))
   loc_4051A1:     Me(8) = RegQueryValueEx(Me(0), arg_14, 0, 1, Me(16), Me(20), var_B4)
   loc_4051B8:     If (Me(8) = 0) Then
   loc_4051CC:       Me(8) = RegCloseKey(Me(0))
   loc_4051D6:       var_CC = Me(16)
-  loc_4051DE:       Thumbs   .db.address_80000208
+  loc_4051DE:       ThumbsDLL.rtcTrimVar
   loc_4051E7:       Me(16) = CStr(var_B4)
   loc_405200:       var_CC = Me(16)
-  loc_405208:       Thumbs   .db.address_80000269
+  loc_405208:       ThumbsDLL.rtcLeftCharVar
   loc_405210:       var_94 = var_B4 'Variant
   loc_405217:     Else
   loc_405217:       var_CC = "Error"
   loc_40521C:       var_94 = var_CC 'Variant
   loc_405228:       If (Me(32) = &HFF) Then
   loc_405243:         var_B4 = CVar(Proc_1_16_403998(Me(8), 0, var_DC, var_FC, var_11C, var_B4, var_CC, (Me(20) - 1))) 'String
-  loc_405246:         Thumbs   .db.address_80000253
+  loc_405246:         ThumbsDLL.rtcMsgBox
   loc_405256:       End If
   loc_405256:     End If
   loc_405259:   Else
   loc_40525E:     var_94 = "Error" 'Variant
   loc_40526A:     If (Me(32) = &HFF) Then
   loc_405285:       var_B4 = CVar(Proc_1_16_403998(Me(8), 0, var_DC, var_FC, var_11C, var_B4, var_B4)) 'String
-  loc_405288:       Thumbs   .db.address_80000253
+  loc_405288:       ThumbsDLL.rtcMsgBox
   loc_405298:     End If
   loc_405298:   End If
   loc_405298: End If
@@ -267,7 +267,7 @@ Public Sub Proc_1_9_403A70
   loc_403A27:   If (Me(8) <> 0) Then
   loc_403A32:     If (Me(32) = &HFF) Then
   loc_403A4D:       var_C0 = CVar(Proc_1_16_403998(Me(8), 0, var_D0, var_F0, var_110)) 'String
-  loc_403A50:       Thumbs   .db.address_80000253
+  loc_403A50:       ThumbsDLL.rtcMsgBox
   loc_403A60:     End If
   loc_403A63:   Else
   loc_403A66:     var_94 = True 'Variant
@@ -291,7 +291,7 @@ Public Sub Proc_1_10_404014 ' Edits the registry?
   loc_403FB4:     If (Me(8) <> 0) Then
   loc_403FBF:       If (Me(32) = &HFF) Then
   loc_403FDA:         var_C8 = CVar(Proc_1_16_403998(Me(8), 0, var_D8, var_F8, var_118, StrConv(var_9C, vbUnicode))) 'String
-  loc_403FDD:         Thumbs   .db.address_80000253
+  loc_403FDD:         ThumbsDLL.rtcMsgBox
   loc_403FED:       End If
   loc_403FF0:     Else
   loc_403FF3:       var_94 = True 'Variant
@@ -353,27 +353,27 @@ Public Sub Proc_1_14_404324(arg_C, arg_10) '404324
   Dim arg_10 As Long
   loc_4041EE: Me(8) = InStr(1, arg_C, "\", 0)
   loc_4041FB: var_94 = arg_C
-  loc_404203: Thumbs   .db.address_80000269
+  loc_404203: ThumbsDLL.rtcLeftCharVar
   loc_40420B: var_B4 = "HKEY_"
   loc_40421D: var_D4 = arg_C
-  loc_404225: Thumbs   .db.address_8000026B
+  loc_404225: ThumbsDLL.rtcRightCharVar
   loc_404244: If CBool(var_E4 Or (var_E4 = "\")) Then
   loc_404255:   var_94 = "Incorrect Format:"
-  loc_404262:   Thumbs   .db.address_80000260
+  loc_404262:   ThumbsDLL.rtcVarBstrFromAnsi
   loc_40426A:   var_C4 = (var_A4 + var_A4)
-  loc_404276:   Thumbs   .db.address_80000260
+  loc_404276:   ThumbsDLL.rtcVarBstrFromAnsi
   loc_404288:   var_114 = ((var_E4 + var_E4) + CVar(arg_C))
-  loc_40428C:   Thumbs   .db.address_80000253
+  loc_40428C:   ThumbsDLL.rtcMsgBox
   loc_4042A4:   Exit Sub
   loc_4042A8: Else
   loc_4042B3:   If (Me(8) = 0) Then
   loc_4042BE:     arg_10 = Proc_1_15_4037C8(arg_C, var_114, &HA, var_C4, &HA, var_94, 0, var_124)
   loc_4042C4:     arg_C = vbNullString
   loc_4042CB:   Else
-  loc_4042E1:     Thumbs   .db.address_80000269
+  loc_4042E1:     ThumbsDLL.rtcLeftCharVar
   loc_4042F3:     arg_10 = Proc_1_15_4037C8(CStr(var_A4), var_A4, arg_C, (Me(8) - 1), arg_10, var_134)
   loc_404309:     var_94 = arg_C
-  loc_404311:     Thumbs   .db.address_8000026B
+  loc_404311:     ThumbsDLL.rtcRightCharVar
   loc_40431A:     arg_C = CStr(var_A4)
   loc_404321:   End If
   loc_404321: End If

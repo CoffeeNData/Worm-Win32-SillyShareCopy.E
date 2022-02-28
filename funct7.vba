@@ -5,7 +5,7 @@ Public Function funct7(a) '403EC8 ' Maybe return other drives to replicate to th
   loc_403DEA: On Error Goto loc_403EBA ' Exit on error
   loc_403DED: ILdDarg ' Uncommon opcode
               'Call the DLL
-  loc_403DFC: Thumbs   .db.address_800002CC
+  loc_403DFC: ThumbsDLL.rtcCreateObject2
   loc_403E04: VarLateMemCallLdRfVar ' Another rarely used opcode
 
   ' Returns the storage drive type of the Drive object named drive. Ref: https://docs.microsoft.com/en-us/office/vba/language/reference/user-interface-help/drivetype-property

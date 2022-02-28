@@ -1,0 +1,188 @@
+  'Data Table: 401838
+  loc_405C60: ZeroRetValVar
+  loc_405C62: LitVarStr var_B4, "HKEY_CLASSES_ROOT\scrfile"
+  loc_405C67: FStVarCopy
+  loc_405C6B: LitStr "AlwaysShowExt"
+  loc_405C6E: FLdRfVar var_A4
+  loc_405C71: CStrVarVal var_B8
+  loc_405C75: FLdRfVar var_C8
+  loc_405C78: ImpAdCallFPR4 Proc_1_10_404014()
+  loc_405C7D: FFree1Str var_B8
+  loc_405C83: LitStr "File Folder"
+  loc_405C86: LitStr vbNullString
+  loc_405C89: FLdRfVar var_A4
+  loc_405C8C: CStrVarVal var_B8
+  loc_405C90: FLdRfVar var_C8
+  loc_405C93: ImpAdCallFPR4 Proc_1_6_404854()
+  loc_405C98: FFree1Str var_B8
+  loc_405C9E: LitStr vbNullString
+  loc_405CA1: LitStr "InfoTip"
+  loc_405CA4: FLdRfVar var_A4
+  loc_405CA7: CStrVarVal var_B8
+  loc_405CAB: FLdRfVar var_C8
+  loc_405CAE: ImpAdCallFPR4 Proc_1_6_404854()
+  loc_405CB3: FFree1Str var_B8
+  loc_405CB9: LitStr vbNullString
+  loc_405CBC: LitStr "NeverShowExt"
+  loc_405CBF: FLdRfVar var_A4
+  loc_405CC2: CStrVarVal var_B8
+  loc_405CC6: FLdRfVar var_C8
+  loc_405CC9: ImpAdCallFPR4 Proc_1_6_404854()
+  loc_405CCE: FFree1Str var_B8
+  loc_405CD4: LitStr vbNullString
+  loc_405CD7: LitStr "TileInfo"
+  loc_405CDA: FLdRfVar var_A4
+  loc_405CDD: CStrVarVal var_B8
+  loc_405CE1: FLdRfVar var_C8
+  loc_405CE4: ImpAdCallFPR4 Proc_1_6_404854()
+  loc_405CE9: FFree1Str var_B8
+  loc_405CEF: LitStr "%1"
+  loc_405CF2: LitStr vbNullString
+  loc_405CF5: FLdRfVar var_A4
+  loc_405CF8: LitVarStr var_B4, "\shell\open\command"
+  loc_405CFD: ConcatVar var_C8
+  loc_405D01: CStrVarVal var_B8
+  loc_405D05: FLdRfVar var_D8
+  loc_405D08: ImpAdCallFPR4 Proc_1_6_404854()
+  loc_405D0D: FFree1Str var_B8
+  loc_405D17: LitVarStr var_B4, "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\"
+  loc_405D1C: FStVarCopy
+  loc_405D20: FLdRfVar var_E8
+  loc_405D23: LitVarStr var_B4, "Windo￿s NT\CurrentVersion\Winlogon￿￿橦"
+  loc_405D28: ConcatVar var_C8
+  loc_405D2C: FStVar var_F8
+  loc_405D30: LitStr "81u3f4nt45y - 24.01.2007 - Surabaya"
+  loc_405D33: LitStr "￿egalNoticeCaption"
+  loc_405D36: FLdRfVar var_F8
+  loc_405D39: CStrVarVal var_B8
+  loc_405D3D: FLdRfVar var_C8
+  loc_405D40: ImpAdCallFPR4 Proc_1_6_404854()
+  loc_405D45: FFree1Str var_B8
+  loc_405D4B: LitStr "Surabaya in my birthday"
+  loc_405D4E: LitStr vbCrLf
+  loc_405D51: ConcatStr
+  loc_405D52: FStStrNoPop var_B8
+  loc_405D55: LitStr "Don't kill me, i'm just send message from your computer"
+  loc_405D58: ConcatStr
+  loc_405D59: FStStrNoPop var_FC
+  loc_405D5C: LitStr vbCrLf
+  loc_405D5F: ConcatStr
+  loc_405D60: FStStrNoPop var_100
+  loc_405D63: LitStr "Terima kasih telah menemaniku walaupun hanya sesaat, tapi bagiku sangat berarti"
+  loc_405D66: ConcatStr
+  loc_405D67: FStStrNoPop var_104
+  loc_405D6A: LitStr vbCrLf
+  loc_405D6D: ConcatStr
+  loc_405D6E: FStStrNoPop var_108
+  loc_405D71: LitStr "Maafkan jika kebahagiaan yang kuminta adalah teman sepanjang hidupku"
+  loc_405D74: ConcatStr
+  loc_405D75: FStStrNoPop var_10C
+  loc_405D78: LitStr vbCrLf
+  loc_405D7B: ConcatStr
+  loc_405D7C: FStStrNoPop var_110
+  loc_405D7F: LitStr "Seharusnya aku mengerti bahwa keberadaanku bukanlah disisimu, hanyalah lamunan dalam sesal"
+  loc_405D82: ConcatStr
+  loc_405D83: FStStrNoPop var_114
+  loc_405D86: LitStr vbCrLf
+  loc_405D89: ConcatStr
+  loc_405D8A: FStStrNoPop var_118
+  loc_405D8D: LitStr "Untuk kekasih yang tak kan pernah kumiliki 3r1k1m0"
+  loc_405D90: ConcatStr
+  loc_405D91: FStStrNoPop var_120
+  loc_405D94: LitStr "LegalNoticeText"
+  loc_405D97: FLdRfVar var_F8
+  loc_405D9A: CStrVarVal var_11C
+  loc_405D9E: FLdRfVar var_C8
+  loc_405DA1: ImpAdCallFPR4 Proc_1_6_404854()
+  loc_405DC2: LitVarStr var_B4, "CheckedValue"
+  loc_405DC7: FStVarCopy
+  loc_405DCB: LitVarStr var_B4, "DefaultValue"
+  loc_405DD0: FStVarCopy
+  loc_405DD4: FLdRfVar var_E8
+  loc_405DD7: LitVarStr var_B4, "Windows\CurrentVersion\explorer\Advanced\Folder\"
+  loc_405DDC: ConcatVar var_C8
+  loc_405DE0: FStVar var_150
+  loc_405DE4: FLdRfVar var_150
+  loc_405DE7: LitVarStr var_B4, "Hidden\"
+  loc_405DEC: ConcatVar var_C8
+  loc_405DF0: FStVar var_160
+  loc_405DF4: FLdRfVar var_160
+  loc_405DF7: LitVarStr var_B4, "NOHIDDEN"
+  loc_405DFC: ConcatVar var_C8
+  loc_405E00: FStVar var_170
+  loc_405E04: LitI4 2
+  loc_405E09: FLdRfVar var_130
+  loc_405E0C: CStrVarVal var_FC
+  loc_405E10: FLdRfVar var_170
+  loc_405E13: CStrVarVal var_B8
+  loc_405E17: FLdRfVar var_C8
+  loc_405E1A: ImpAdCallFPR4 Proc_1_2_4044D4()
+  loc_405E29: LitI4 2
+  loc_405E2E: FLdRfVar var_140
+  loc_405E31: CStrVarVal var_FC
+  loc_405E35: FLdRfVar var_170
+  loc_405E38: CStrVarVal var_B8
+  loc_405E3C: FLdRfVar var_C8
+  loc_405E3F: ImpAdCallFPR4 Proc_1_2_4044D4()
+  loc_405E4E: FLdRfVar var_160
+  loc_405E51: LitVarStr var_B4, "NOHIDORSYS"
+  loc_405E56: ConcatVar var_C8
+  loc_405E5A: FStVar var_170
+  loc_405E5E: LitI4 0
+  loc_405E63: FLdRfVar var_130
+  loc_405E66: CStrVarVal var_FC
+  loc_405E6A: FLdRfVar var_170
+  loc_405E6D: CStrVarVal var_B8
+  loc_405E71: FLdRfVar var_C8
+  loc_405E74: ImpAdCallFPR4 Proc_1_2_4044D4()
+  loc_405E83: LitI4 2
+  loc_405E88: FLdRfVar var_140
+  loc_405E8B: CStrVarVal var_FC
+  loc_405E8F: FLdRfVar var_170
+  loc_405E92: CStrVarVal var_B8
+  loc_405E96: FLdRfVar var_C8
+  loc_405E99: ImpAdCallFPR4 Proc_1_2_4044D4()
+  loc_405EA8: FLdRfVar var_160
+  loc_405EAB: LitVarStr var_B4, "SHOWALL"
+  loc_405EB0: ConcatVar var_C8
+  loc_405EB4: FStVar var_170
+  loc_405EB8: LitI4 0
+  loc_405EBD: FLdRfVar var_130
+  loc_405EC0: CStrVarVal var_FC
+  loc_405EC4: FLdRfVar var_170
+  loc_405EC7: CStrVarVal var_B8
+  loc_405ECB: FLdRfVar var_C8
+  loc_405ECE: ImpAdCallFPR4 Proc_1_2_4044D4()
+  loc_405EDD: LitI4 2
+  loc_405EE2: FLdRfVar var_140
+  loc_405EE5: CStrVarVal var_FC
+  loc_405EE9: FLdRfVar var_170
+  loc_405EEC: CStrVarVal var_B8
+  loc_405EF0: FLdRfVar var_C8
+  loc_405EF3: ImpAdCallFPR4 Proc_1_2_4044D4()
+  loc_405F02: FLdRfVar var_150
+  loc_405F05: LitVarStr var_B4, "HideFileExt"
+  loc_405F0A: ConcatVar var_C8
+  loc_405F0E: FStVar var_170
+  loc_405F12: LitI4 1
+  loc_405F17: FLdRfVar var_130
+  loc_405F1A: CStrVarVal var_FC
+  loc_405F1E: FLdRfVar var_170
+  loc_405F21: CStrVarVal var_B8
+  loc_405F25: FLdRfVar var_C8
+  loc_405F28: ImpAdCallFPR4 Proc_1_2_4044D4()
+  loc_405F37: LitI4 1
+  loc_405F3C: FLdRfVar var_140
+  loc_405F3F: CStrVarVal var_FC
+  loc_405F43: FLdRfVar var_170
+  loc_405F46: CStrVarVal var_B8
+  loc_405F4A: FLdRfVar var_C8
+  loc_405F4D: ImpAdCallFPR4 Proc_1_2_4044D4()
+  loc_405F5C: LitI4 1
+  loc_405F61: LitStr "UncheckedValue"
+  loc_405F64: FLdRfVar var_170
+  loc_405F67: CStrVarVal var_B8
+  loc_405F6B: FLdRfVar var_C8
+  loc_405F6E: ImpAdCallFPR4 Proc_1_2_4044D4()
+  loc_405F73: FFree1Str var_B8
+  loc_405F79: ExitProcCbHresult

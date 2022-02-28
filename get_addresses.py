@@ -25,7 +25,7 @@ if __name__=="__main__":
     for line in lines:
         try:
             if query in line:
-                print("0x" + line.split(query+".address_")[1][:8])
+                print(query + ".address_" + line.split(query + ".address_")[1][:8])
         except:
             error_list.append(("Error at line: "+line).split("\n")[0])
             continue

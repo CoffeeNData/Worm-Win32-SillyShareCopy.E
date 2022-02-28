@@ -16,11 +16,11 @@
 
   loc_403824: FLdRfVar var_C4
   loc_403827: FLdRfVar var_D4
-  loc_40382A: ImpAdCallFPR4 Thumbs   .db.address_80000208
+  loc_40382A: ImpAdCallFPR4 ThumbsDLL.rtcTrimVar
 
   loc_40382F: FLdRfVar var_D4
   loc_403832: FLdRfVar folder_path
-  loc_403835: ImpAdCallFPR4 Thumbs   .db.address_80000210
+  loc_403835: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar
   loc_40383A: FLdRfVar folder_path
   
   loc_40383D: IStDarg arg_C
@@ -35,7 +35,7 @@
   loc_40385D: FStVarCopyObj var_C4
   loc_403860: FLdRfVar var_C4
   loc_403863: FLdRfVar var_D4
-  loc_403866: ImpAdCallFPR4 Thumbs   .db.address_8000029A
+  loc_403866: ImpAdCallFPR4 ThumbsDLL.rtcEnvironVar
 
   loc_40386B: FLdRfVar var_D4
   loc_40386E: LitVarStr backslash, "\" ; backslash = "\"

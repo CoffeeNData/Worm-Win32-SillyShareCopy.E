@@ -11,7 +11,7 @@
   loc_4057A0: FLdZeroAd var_9C
   loc_4057A3: CVarStr var_AC
   loc_4057A6: FLdRfVar var_BC
-  loc_4057A9: ImpAdCallFPR4 Thumbs   .db.address_80000210
+  loc_4057A9: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar
   loc_4057AE: FLdRfVar var_BC
   loc_4057B1: FStVar var_CC
   loc_4057B5: FFree1Ad var_98
@@ -29,7 +29,7 @@
   loc_4057F1: LitI4 1
   loc_4057F6: FLdRfVar var_CC
   loc_4057F9: FLdRfVar var_AC
-  loc_4057FC: ImpAdCallFPR4 Thumbs   .db.address_8000026B
+  loc_4057FC: ImpAdCallFPR4 ThumbsDLL.rtcRightCharVar
   loc_405801: FLdRfVar var_AC
   loc_405804: FLdRfVar var_FC
   loc_405807: NeVarBool
@@ -49,7 +49,7 @@
   loc_40583A: FLdZeroAd var_9C
   loc_40583D: CVarStr var_AC
   loc_405840: FLdRfVar var_BC
-  loc_405843: ImpAdCallFPR4 Thumbs   .db.address_80000210
+  loc_405843: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar
   loc_405848: FLdRfVar var_BC
   loc_40584B: FStVar var_10C
   loc_40584F: FFree1Ad var_98
@@ -58,7 +58,7 @@
   loc_40585F: FStVarCopyObj var_AC
   loc_405862: FLdRfVar var_AC
   loc_405865: FLdRfVar var_BC
-  loc_405868: ImpAdCallFPR4 Thumbs   .db.address_80000210
+  loc_405868: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar
   loc_40586D: FLdRfVar var_BC
   loc_405870: EqVarBool
   loc_405879: BranchF loc_4058AE
@@ -68,9 +68,11 @@
   loc_40588B: LitI4 0
   loc_405890: FnInStr4Var
   loc_405894: CI4Var
+
   loc_405896: FLdRfVar var_CC
   loc_405899: FLdRfVar var_BC
-  loc_40589C: ImpAdCallFPR4 Thumbs   .db.address_80000269
+  loc_40589C: ImpAdCallFPR4 ThumbsDLL.rtcLeftCharVar
+
   loc_4058A1: FLdRfVar var_BC
   loc_4058A4: FStVar var_11C
   loc_4058AB: Branch loc_4058E0
@@ -83,7 +85,7 @@
   loc_4058C5: CI4Var
   loc_4058C7: FLdRfVar var_10C
   loc_4058CA: FLdRfVar var_EC
-  loc_4058CD: ImpAdCallFPR4 Thumbs   .db.address_80000269
+  loc_4058CD: ImpAdCallFPR4 ThumbsDLL.rtcLeftCharVar
   loc_4058D2: FLdRfVar var_EC
   loc_4058D5: ConcatVar var_12C
   loc_4058D9: FStVar var_11C

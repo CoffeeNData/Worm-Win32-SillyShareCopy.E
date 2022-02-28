@@ -8,15 +8,15 @@ Public Function funct1(a) '40389C
   loc_403813: If (option = 0) Then
   loc_40381F:   Proc_1_7_40529C(startup, "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders") ' startup is not set
   'Calls the DLL 2 times
-  loc_40382A:   Thumbs   .db.address_80000208
-  loc_403835:   Thumbs   .db.address_80000210 
+  loc_40382A:   ThumbsDLL.rtcTrimVar
+  loc_403835:   ThumbsDLL.rtcUpperCaseVar 
   loc_40383D:   a = var_E4 ' var_E4 is not set
 
   loc_40384A: Else
   loc_403855:   If (option = 1) Then
   loc_40385D:     startup = "windir"
                   'Calls the DLL, maybe with parameter startup
-  loc_403866:     Thumbs   .db.address_8000029A
+  loc_403866:     ThumbsDLL.rtcEnvironVar
 
     ' WARNING: Varible definition overlooked
       'loc_403816: LitStr "Startup"

@@ -16,9 +16,9 @@ Public Function funct10() '40417C
   loc_4040D1: var_118 = Me.Global.App
 
   loc_4040E1: original_name = CVar(App.EXEName) 'String
-  loc_4040E7: Thumbs   .db.address_80000210
+  loc_4040E7: ThumbsDLL.rtcUpperCaseVar
   loc_4040F4: copy1_name = "Adobe Online"
-  loc_4040FD: Thumbs   .db.address_80000210
+  loc_4040FD: ThumbsDLL.rtcUpperCaseVar
   
   ' Copy itself to the given path ?
   loc_404115: If (var_12C = var_12C) Then
@@ -27,14 +27,14 @@ Public Function funct10() '40417C
                 ' The files must be created and copied to the location,
                 ' so its probable that this 2 calls are responsible
                 ' for the file system operations
-  loc_404126:   Thumbs   .db.address_80000240
-  loc_40413A:   Thumbs   .db.address_80000258
+  loc_404126:   ThumbsDLL.rtcFileCopy
+  loc_40413A:   ThumbsDLL.rtcShell
   loc_40413F:   remaining_copy = au_path
   loc_404145: Else ' Do the same as above, but return different app paths
   loc_404148:   var_140 = CStr(ao_path)
   loc_40414F:   var_11C = CStr(au_path)
-  loc_404153:   Thumbs   .db.address_80000240
-  loc_404167:   Thumbs   .db.address_80000258
+  loc_404153:   ThumbsDLL.rtcFileCopy
+  loc_404167:   ThumbsDLL.rtcShell
   loc_40416C:   remaining_copy = ao_path
   loc_40416F: End If
 
