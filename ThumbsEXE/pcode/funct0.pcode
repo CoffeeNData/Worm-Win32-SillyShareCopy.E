@@ -9,9 +9,12 @@
   loc_405798: FLdPr var_98
   loc_40579B:  = App.Path
   loc_4057A0: FLdZeroAd var_9C
-  loc_4057A3: CVarStr var_AC
+
+  ' DLL Call
+  loc_4057A3: CVarStr var_AC  ' char *var_AC = []; push var_AC
   loc_4057A6: FLdRfVar var_BC
   loc_4057A9: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar
+
   loc_4057AE: FLdRfVar var_BC
   loc_4057B1: FStVar var_CC
   loc_4057B5: FFree1Ad var_98

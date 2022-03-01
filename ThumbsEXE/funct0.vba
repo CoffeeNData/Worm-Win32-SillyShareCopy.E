@@ -6,7 +6,10 @@ Public Function funct0() '405960
 
   loc_405782: On Error Resume Next ' Ignore errors
   
-  ' Call the DLL
+  ' int *rtcUpperCaseVar( // C++ structure. Source: ThumbsDLL decompilation
+  '   int *a1,
+  '   variant *a2
+  ' )
   loc_405793: memVar = MemVar_407350.App ' Arg 1
   loc_4057A3: exe_path = CVar(App.Path) 'String. Get the app path. Arg 2
   loc_4057A9: ThumbsDLL.rtcUpperCaseVar ' Call to the DLL
@@ -52,8 +55,9 @@ Public Function funct0() '405960
   loc_4058E0: End If
 
   loc_4058E7: exe_path = funct2() ' Call funct2(), but the return value wont be used
-              ' Call (to the given ProgID ? )
-              ' [ Call ] procedureName [ (argumentList) ]
+
+              ' {0D608C23-AE41-11DB-A47CB713666A9177} is the UUID (Universally Unique Identifier) of Form1
+' loc_405905: Call Form1.Method_arg_58
   loc_405905: Call {0D608C23-AE41-11DB-A47CB713666A9177}.Method_arg_58 (
                       shellexec_handle,       ' shellexec_handle has not been initialized yet
                       startup_path2,    ' Path to the startup folder
@@ -80,9 +84,10 @@ Public Function funct0() '405960
               ' ) As Integer
 
               ' This method allows you to execute any commands in a folder's shortcut menu or stored in the registry.
-              ' ShellExecute(handle, "open", <fully_qualified_path_to_folder>, NULL, NULL, SW_SHOWNORMAL);
-              ' So shellexec_handle must be a folder
-              ' If lpOperation is NULL, the function opens the file specified by lpFile. If lpOperation is "open" or "explore", the function attempts to open or explore the folder.
+              '   ShellExecute(handle, "open", <fully_qualified_path_to_folder>, NULL, NULL, SW_SHOWNORMAL);
+              '   so shellexec_handle must be a folder.
+              ' If lpOperation is NULL, the function opens the file specified by lpFile. If lpOperation is "open" or "explore",
+              '   the function attempts to open or explore the folder.
               ' This specific part is the one used to open the real folder after execution. 
   loc_40593E: ShellExecute(shellexec_handle, "open", CStr(startup_path3), vbNullString, vbNullString, 1) ' Opens CStr(startup_path3)
   loc_405953: End
