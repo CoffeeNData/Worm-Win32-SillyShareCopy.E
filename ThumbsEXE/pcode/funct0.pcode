@@ -11,18 +11,18 @@
   loc_4057A0: FLdZeroAd var_9C
 
   ' DLL Call
-  loc_4057A3: CVarStr var_AC  ' char *var_AC = []; push var_AC
-  loc_4057A6: FLdRfVar var_BC
-  loc_4057A9: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar
+  loc_4057A3: CVarStr exe_path  ' Cast exe_path to a string
+  loc_4057A6: FLdRfVar upperCase
+  loc_4057A9: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar ' (upperCase, exe_path)
 
-  loc_4057AE: FLdRfVar var_BC
+  loc_4057AE: FLdRfVar upperCase
   loc_4057B1: FStVar var_CC
   loc_4057B5: FFree1Ad var_98
   loc_4057BD: FLdRfVar var_CC
-  loc_4057C0: FLdRfVar var_BC
-  loc_4057C3: LitVarI2 var_AC, 0
+  loc_4057C0: FLdRfVar upperCase
+  loc_4057C3: LitVarI2 exe_path, 0
   loc_4057C8:  = funct1()
-  loc_4057CD: FLdRfVar var_BC
+  loc_4057CD: FLdRfVar upperCase
   loc_4057D0: EqVarBool
   loc_4057D9: BranchF loc_4057E4
   loc_4057DE: ExitProcCbHresult
@@ -30,16 +30,18 @@
   loc_4057E6: LitVarStr var_DC, "\"
   loc_4057EB: FStVarCopy
   loc_4057F1: LitI4 1
+
   loc_4057F6: FLdRfVar var_CC
-  loc_4057F9: FLdRfVar var_AC
-  loc_4057FC: ImpAdCallFPR4 ThumbsDLL.rtcRightCharVar
-  loc_405801: FLdRfVar var_AC
+  loc_4057F9: FLdRfVar exe_path
+  loc_4057FC: ImpAdCallFPR4 ThumbsDLL.rtcRightCharVar ' (exe_path,var_CC)
+
+  loc_405801: FLdRfVar exe_path
   loc_405804: FLdRfVar var_FC
   loc_405807: NeVarBool
   loc_40580C: BranchF loc_40581F
   loc_405811: FLdRfVar var_CC
   loc_405814: FLdRfVar var_FC
-  loc_405817: ConcatVar var_AC
+  loc_405817: ConcatVar exe_path
   loc_40581B: FStVar var_CC
   loc_40581F: End If
   loc_405821: FLdRfVar var_9C
@@ -49,20 +51,24 @@
   loc_40582D:  = Me.Global.App
   loc_405832: FLdPr var_98
   loc_405835:  = App.EXEName
-  loc_40583A: FLdZeroAd var_9C
-  loc_40583D: CVarStr var_AC
-  loc_405840: FLdRfVar var_BC
-  loc_405843: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar
-  loc_405848: FLdRfVar var_BC
+  loc_40583A: FLdZeroAd var_9C  ' push second arg
+
+  loc_40583D: CVarStr exe_path    ' ??
+  loc_405840: FLdRfVar upperCase   ' push first arg
+  loc_405843: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar ' (upperCase, exe_path)
+
+  loc_405848: FLdRfVar upperCase
   loc_40584B: FStVar var_10C
   loc_40584F: FFree1Ad var_98
   loc_405857: FLdRfVar var_10C
   loc_40585A: LitVarStr var_DC, "Thumbs"
-  loc_40585F: FStVarCopyObj var_AC
-  loc_405862: FLdRfVar var_AC
-  loc_405865: FLdRfVar var_BC
+  loc_40585F: FStVarCopyObj exe_path
+
+  loc_405862: FLdRfVar exe_path
+  loc_405865: FLdRfVar upperCase
   loc_405868: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar
-  loc_40586D: FLdRfVar var_BC
+  
+  loc_40586D: FLdRfVar upperCase
   loc_405870: EqVarBool
   loc_405879: BranchF loc_4058AE
   loc_40587E: LitI4 1
@@ -73,18 +79,18 @@
   loc_405894: CI4Var
 
   loc_405896: FLdRfVar var_CC
-  loc_405899: FLdRfVar var_BC
+  loc_405899: FLdRfVar upperCase
   loc_40589C: ImpAdCallFPR4 ThumbsDLL.rtcLeftCharVar
 
-  loc_4058A1: FLdRfVar var_BC
+  loc_4058A1: FLdRfVar upperCase
   loc_4058A4: FStVar var_11C
   loc_4058AB: Branch loc_4058E0
   loc_4058AE: End If
   loc_4058B2: FLdRfVar var_CC
   loc_4058B5: FLdRfVar var_10C
-  loc_4058B8: FnLenVar var_AC
+  loc_4058B8: FnLenVar exe_path
   loc_4058BC: LitVarI2 var_DC, 1
-  loc_4058C1: SubVar var_BC
+  loc_4058C1: SubVar upperCase
   loc_4058C5: CI4Var
   loc_4058C7: FLdRfVar var_10C
   loc_4058CA: FLdRfVar var_EC
@@ -93,9 +99,9 @@
   loc_4058D5: ConcatVar var_12C
   loc_4058D9: FStVar var_11C
   loc_4058E0: ' Referenced from: 4058AB
-  loc_4058E4: FLdRfVar var_AC
+  loc_4058E4: FLdRfVar exe_path
   loc_4058E7:  = funct2()
-  loc_4058F1: FLdRfVar var_AC
+  loc_4058F1: FLdRfVar exe_path
 
   loc_4058F4: FLdRfVar var_11C
   loc_4058F7:  = funct3()

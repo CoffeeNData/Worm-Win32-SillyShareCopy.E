@@ -1,3 +1,4 @@
+' Open the true directory with the path in uppercase
 Public Function funct0() '405960
   'Data Table: 401838
   Dim MemVar_407350 As Global
@@ -10,9 +11,9 @@ Public Function funct0() '405960
   '   int *a1,
   '   variant *a2
   ' )
-  loc_405793: memVar = MemVar_407350.App ' Arg 1
-  loc_4057A3: exe_path = CVar(App.Path) 'String. Get the app path. Arg 2
-  loc_4057A9: ThumbsDLL.rtcUpperCaseVar ' Call to the DLL
+  loc_405793: upperCase = MemVar_407350.App ' Arg 1. What is upperCase?
+  loc_4057A3: exe_path = CVar(App.Path) 'String. Gets the app path. Arg 2
+  loc_4057A9: ThumbsDLL.rtcUpperCaseVar(upperCase, exe_path) ' Uppercase exe_path and store it into upperCase
   
   loc_4057B1: startup_path4 = startup_path 'Variant. startup_path hasnt been initialized yet
   loc_4057C3: exe_path = 0 ' Clear the variable
@@ -23,23 +24,23 @@ Public Function funct0() '405960
   loc_4057DE:   funct0 = startup_path ' Set startup_path as return code, but dont exit (?)
   loc_4057E4: End If
 
-  ' Call to the DLL
+  ' Call the DLL
   loc_4057EB: backslash = "\" 'Variant. Arg 1 (root path??)
   loc_4057FC: ThumbsDLL.rtcRightCharVar
 
-  loc_40580C: If CBool(exe_path <> backslash) Then
+  loc_40580C: If CBool(exe_path <> backslash) Then ' If exe_path NOT backslash...
   loc_40581B:   startup_path4 = startup_path4 & backslash 'Variant. Unknown value + \
   loc_40581F: End If
 
   ' Call the DLL
-  loc_40582D: memVar = MemVar_407350.App ' Arg 1
+  loc_40582D: upperCase = MemVar_407350.App ' Arg 1
   loc_40583D: exe_path = CVar(App.EXEName) 'String. Get the EXE name. Arg 2
-  loc_405843: ThumbsDLL.rtcUpperCaseVar
+  loc_405843: ThumbsDLL.rtcUpperCaseVar(upperCase, exe_path) ' Uppercase exe_path and store it into upperCase
 
   ' Call the DLL
   loc_40584B: startup_path2 = startup_path 'Variant. Arg 1
   loc_40585F: exe_path = "Thumbs" ' Arg 2
-  loc_405868: ThumbsDLL.rtcUpperCaseVar
+  loc_405868: ThumbsDLL.rtcUpperCaseVar(upperCase, exe_path)
 
   loc_405879: If (startup_path = startup_path) Then ' If (True) Then
                 ' Call the DLL
