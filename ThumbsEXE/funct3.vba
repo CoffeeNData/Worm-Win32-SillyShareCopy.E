@@ -1,4 +1,4 @@
-' Get descriptor for the second file in given path
+' Get properties of the second file it finds
 Public Function funct3(path) '404DDC
   'Data Table: 401838
   Dim null_ptr As Variant
@@ -25,7 +25,7 @@ Public Function funct3(path) '404DDC
             '  [out] LPWIN32_FIND_DATAA lpFindFileData  // Pointer to the struct/array with the wanted characteristics
             ');
             '
-            'typedef struct _WIN32_FIND_DATAA {         // Struct of characteristics. For sanity reasons I will call this a "descriptor"
+            'typedef struct _WIN32_FIND_DATAA {         // Struct of characteristics. For sanity reasons I will call this a "property array"
             '  DWORD    dwFileAttributes;
             '  FILETIME ftCreationTime;
             '  FILETIME ftLastAccessTime;
@@ -42,7 +42,7 @@ Public Function funct3(path) '404DDC
             '} WIN32_FIND_DATAA, *PWIN32_FIND_DATAA, *LPWIN32_FIND_DATAA;
 
   ' first_file_found_data MUST be an array with the desired file characteristics
-  ' Find first file in search_path and store its descriptor in first_file_found_data
+  ' Find first file in search_path and store its property array in first_file_found_data
   loc_404D10: file_handle = CVar(FindFirstFile(search_path, Record Of first_file_found_data)) 'Variant.
   loc_404D3D: null_ptr = funct4(wildard_path2, path, first_file_found_data) ' wildard_path2 hasnt been initialized yet
 
@@ -52,7 +52,7 @@ Public Function funct3(path) '404DDC
 
   ' Dont continue unless other file is found
   ' FindNextFile() will return a non-zero value. If the function fails, then 0 is returned.
-  ' If function succeeds, it will store the next file's descriptor in lpFindFileData
+  ' If function succeeds, it will store the next file's property array in lpFindFileData
               'BOOL FindNextFileA(
               '  [in]  HANDLE             hFindFile,
               '  [out] LPWIN32_FIND_DATAA lpFindFileData
@@ -65,7 +65,7 @@ Public Function funct3(path) '404DDC
   loc_404DBA: End If
 
   loc_404DC1: FindClose(CLng(file_handle)) ' Close the handle
-  loc_404DC9: funct3 = result_descriptor ' Return the new file's descriptor
+  loc_404DC9: funct3 = result_descriptor ' Return the new file's property array
 
   ' This presumably wont execute, beacause if it did then other
   ' calls to this function wouldnt make any sense.
