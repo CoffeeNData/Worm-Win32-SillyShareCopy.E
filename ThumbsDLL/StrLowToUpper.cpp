@@ -1,3 +1,4 @@
+// Uppercase buffSize characaters of targetStrPtrW (unicode string) and store it back in targetStrPtrW
 char *__stdcall StrLowToUpper(char *targetStrPtrW, int buffSize)
 {
   int v2; // ebx

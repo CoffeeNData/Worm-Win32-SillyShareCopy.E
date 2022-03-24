@@ -10,10 +10,10 @@
   loc_40579B:  = App.Path
   loc_4057A0: FLdZeroAd var_9C
 
-  ' DLL Call
-  loc_4057A3: CVarStr exe_path  ' Cast exe_path to a string
+  ; DLL Call
+  loc_4057A3: CVarStr exe_path  ; Cast exe_path to a string
   loc_4057A6: FLdRfVar upperCase
-  loc_4057A9: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar ' (upperCase, exe_path)
+  loc_4057A9: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar ; (upperCase, exe_path)
 
   loc_4057AE: FLdRfVar upperCase
   loc_4057B1: FStVar var_CC
@@ -33,7 +33,7 @@
 
   loc_4057F6: FLdRfVar var_CC
   loc_4057F9: FLdRfVar exe_path
-  loc_4057FC: ImpAdCallFPR4 ThumbsDLL.rtcRightCharVar ' (exe_path,var_CC)
+  loc_4057FC: ImpAdCallFPR4 ThumbsDLL.rtcRightCharVar ; (exe_path,var_CC)
 
   loc_405801: FLdRfVar exe_path
   loc_405804: FLdRfVar var_FC
@@ -51,11 +51,11 @@
   loc_40582D:  = Me.Global.App
   loc_405832: FLdPr var_98
   loc_405835:  = App.EXEName
-  loc_40583A: FLdZeroAd var_9C  ' push second arg
+  loc_40583A: FLdZeroAd var_9C  ; push second arg
 
-  loc_40583D: CVarStr exe_path    ' ??
-  loc_405840: FLdRfVar upperCase   ' push first arg
-  loc_405843: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar ' (upperCase, exe_path)
+  loc_40583D: CVarStr exe_path    ; ??
+  loc_405840: FLdRfVar upperCase  ; push first arg
+  loc_405843: ImpAdCallFPR4 ThumbsDLL.rtcUpperCaseVar ; (upperCase, exe_path)
 
   loc_405848: FLdRfVar upperCase
   loc_40584B: FStVar var_10C
@@ -98,15 +98,15 @@
   loc_4058D2: FLdRfVar var_EC
   loc_4058D5: ConcatVar var_12C
   loc_4058D9: FStVar var_11C
-  loc_4058E0: ' Referenced from: 4058AB
+  loc_4058E0: ; Referenced from: 4058AB
   loc_4058E4: FLdRfVar exe_path
   loc_4058E7:  = funct2()
   loc_4058F1: FLdRfVar exe_path
 
   loc_4058F4: FLdRfVar var_11C
   loc_4058F7:  = funct3()
-  loc_405901: FLdRfVar shellexec_target ' Maybe ( shellexec_target = var_11C = funct3) because of FLdRfVar instruction?
-                                        ' This will make sense if funct3() returns the path to an executable
+  loc_405901: FLdRfVar shellexec_target ; Maybe ( shellexec_target = var_11C = funct3) because of FLdRfVar instruction?
+                                        ; This will make sense if funct3() returns the path to an executable
 
   loc_405904: FLdPrThis
   loc_405905: Call {0D608C23-AE41-11DB-A47CB713666A9177}.Method_arg_58 ()
