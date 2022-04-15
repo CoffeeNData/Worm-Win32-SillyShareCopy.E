@@ -31,7 +31,7 @@
   loc_40383A: FLdRfVar folderPath                     ; Load folderPath as a floating point number?? MUST CHECK
 
   ; Skip CHECK_EXISTS
-  loc_40383D: IStDarg arg_C       ; arg_C = Darg
+  loc_40383D: IStDarg option       ; option = Darg ; option = var_E4
   loc_403847: Branch EXIT_FUNCT   ; jmp EXIT_FUNCT and skip CHECK_EXISTS
 
   ; Check if var_A4 exists. If not, var_A4 = 1
@@ -53,7 +53,7 @@
   loc_403873: ConcatVar folderPath      ; folderPath =  folderPath + backSlash
   loc_403877: LitVarStr dllFileName, "Thumbs   .db"
   loc_40387C: ConcatVar dllFileName2    ; dllFileName2 = dllFileName2 + dllFileName
-  loc_403880: IStDarg arg_C
+  loc_403880: IStDarg option
   EXIT_FUNCT: ; Referenced from: 403847
   EXIT_FUNCT: End If
   EXIT_FUNCT: ILdRfDarg
