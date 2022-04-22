@@ -1,15 +1,23 @@
-Public Sub Proc_1_7_40529C(first_arg, second_arg)
+Public Sub Proc_1_7_40529C(res_arg, second_arg)
   'Data Table: 4013C0
   Dim var_CC As Variant
   Dim var_B4 As Variant
 
-  loc_4050B7: first_arg_cpy = first_arg
+  ' Need to reverse/deobfuscate the following:
+  ' [] Proc_1_14_404324
+  ' [] Proc_1_16_403998
+  ' [] ThumbsDLL.rtcSpaceVar
+  ' [] ThumbsDLL.rtcTrimVar
+  ' [] ThumbsDLL.rtcLeftCharVar
+  ' [] ThumbsDLL.rtcMsgBox
+
+  loc_4050B7: res_arg_cpy = res_arg
   loc_4050C5: Me(20) = 0
   loc_4050CD: Me(16) = vbNullString
-  loc_4050DA: Proc_1_14_404324(first_arg_cpy)
+  loc_4050DA: Proc_1_14_404324(res_arg_cpy)
 
   loc_4050E6: If CBool(Me(4)) Then
-  loc_40511B:   Me(8) = RegOpenKeyEx(Me(4), first_arg_cpy, 0, &H20019, Me(0))
+  loc_40511B:   Me(8) = RegOpenKeyEx(Me(4), res_arg_cpy, 0, &H20019, Me(0))
   loc_40512E:   If (Me(8) = 0) Then
   loc_405139:     ThumbsDLL.rtcSpaceVar
   loc_405142:     Me(16) = CStr(var_B4)
@@ -39,5 +47,5 @@ Public Sub Proc_1_7_40529C(first_arg, second_arg)
   loc_405298:     End If
   loc_405298:   End If
   loc_405298: End If
-  loc_405298: Result = first_arg: Exit Sub
+  loc_405298: Result = res_arg: Exit Sub
 End Sub

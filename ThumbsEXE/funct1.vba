@@ -53,5 +53,5 @@ Public Function funct1(option) '40389C
   loc_40388C:   End If
   loc_40388C: End If
 
-  loc_403896: funct1 = empty_str ' funct1 = ""
+  loc_403896: funct1 = empty_str ' Returns an empty string
 End Function

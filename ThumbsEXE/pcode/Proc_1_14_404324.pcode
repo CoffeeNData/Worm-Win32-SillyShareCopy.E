@@ -1,0 +1,88 @@
+  'Data Table: 4013C0
+  loc_4041DC: LitI4 1
+  loc_4041E1: ILdI4 arg_C
+  loc_4041E4: LitStr "\"
+  loc_4041E7: LitI4 0
+  loc_4041EC: FnInStr4
+  loc_4041EE: FMemStI4 arg_8(8)
+  loc_4041F3: LitI4 5
+  loc_4041F8: ILdRf arg_C
+  loc_4041FB: CVarRef
+  loc_404200: FLdRfVar var_A4
+  loc_404203: ImpAdCallFPR4 ThumbsDLL.rtcLeftCharVar
+  loc_404208: FLdRfVar var_A4
+  loc_40420B: LitVarStr var_B4, "HKEY_"
+  loc_404210: HardType
+  loc_404211: NeVar var_C4
+  loc_404215: LitI4 1
+  loc_40421A: ILdRf arg_C
+  loc_40421D: CVarRef
+  loc_404222: FLdRfVar var_E4
+  loc_404225: ImpAdCallFPR4 ThumbsDLL.rtcRightCharVar
+  loc_40422A: FLdRfVar var_E4
+  loc_40422D: LitVarStr var_F4, "\"
+  loc_404232: HardType
+  loc_404233: EqVar var_104
+  loc_404237: OrVar var_114
+  loc_40423B: CBoolVarNull
+  loc_404244: BranchF loc_4042A8
+  loc_404247: LitVar_Missing var_154
+  loc_40424A: LitVar_Missing var_134
+  loc_40424D: LitVar_Missing var_124
+  loc_404250: LitI4 0
+  loc_404255: LitVarStr var_94, "Incorrect Format:"
+  loc_40425A: LitI4 &HA
+  loc_40425F: FLdRfVar var_A4
+  loc_404262: ImpAdCallFPR4 ThumbsDLL.rtcVarBstrFromAnsi
+  loc_404267: FLdRfVar var_A4
+  loc_40426A: AddVar var_C4
+  loc_40426E: LitI4 &HA
+  loc_404273: FLdRfVar var_E4
+  loc_404276: ImpAdCallFPR4 ThumbsDLL.rtcVarBstrFromAnsi
+  loc_40427B: FLdRfVar var_E4
+  loc_40427E: AddVar var_104
+  loc_404282: ILdI4 arg_C
+  loc_404285: CVarStr var_B4
+  loc_404288: AddVar var_114
+  loc_40428C: ImpAdCallFPR4 ThumbsDLL.rtcMsgBox
+  loc_4042A4: ExitProc
+  loc_4042A5: Branch loc_404321
+  loc_4042A8: End If
+  loc_4042A8: FMemLdR4 arg_8(8)
+  loc_4042AD: LitI4 0
+  loc_4042B2: EqI4
+  loc_4042B3: BranchF loc_4042CB
+  loc_4042B6: ILdRf arg_C
+  loc_4042B9: ImpAdCallI2 Proc_1_15_4037C8()
+  loc_4042BE: IStI4 arg_10
+  loc_4042C1: LitStr vbNullString
+  loc_4042C4: IStStrCopy arg_C
+  loc_4042C8: Branch loc_404321
+  loc_4042CB: End If
+  loc_4042CB: FMemLdR4 arg_8(8)
+  loc_4042D0: LitI4 1
+  loc_4042D5: SubI4
+  loc_4042D6: ILdRf arg_C
+  loc_4042D9: CVarRef
+  loc_4042DE: FLdRfVar var_A4
+  loc_4042E1: ImpAdCallFPR4 ThumbsDLL.rtcLeftCharVar
+  loc_4042E6: FLdRfVar var_A4
+  loc_4042E9: CStrVarTmp
+  loc_4042EA: PopTmpLdAdStr
+  loc_4042EE: ImpAdCallI2 Proc_1_15_4037C8()
+  loc_4042F3: IStI4 arg_10
+  loc_4042F6: FFree1Str var_158
+  loc_4042FC: ILdI4 arg_C
+  loc_4042FF: FnLenStr
+  loc_404300: FMemLdR4 arg_8(8)
+  loc_404305: SubI4
+  loc_404306: ILdRf arg_C
+  loc_404309: CVarRef
+  loc_40430E: FLdRfVar var_A4
+  loc_404311: ImpAdCallFPR4 ThumbsDLL.rtcRightCharVar
+  loc_404316: FLdRfVar var_A4
+  loc_404319: CStrVarTmp
+  loc_40431A: IStStr
+  loc_404321: ' Referenced from: 4042C8
+  loc_404321: ' Referenced from: 4042A5
+  loc_404321: ExitProc
