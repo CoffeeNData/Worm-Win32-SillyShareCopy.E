@@ -16,7 +16,15 @@ Public Sub Proc_1_7_40529C(res_arg, second_arg)
   loc_4050CD: Me(16) = vbNullString
   loc_4050DA: Proc_1_14_404324(res_arg_cpy)
 
-  loc_4050E6: If CBool(Me(4)) Then
+  loc_4050E6: If CBool(Me(4)) Then ' Me(4) has an unknown value
+
+                ' LSTATUS RegOpenKeyExA(
+                '  [in]           HKEY   hKey,
+                '  [in, optional] LPCSTR lpSubKey,
+                '  [in]           DWORD  ulOptions,
+                '  [in]           REGSAM samDesired,
+                '  [out]          PHKEY  phkResult
+                ' );
   loc_40511B:   Me(8) = RegOpenKeyEx(Me(4), res_arg_cpy, 0, &H20019, Me(0))
   loc_40512E:   If (Me(8) = 0) Then
   loc_405139:     ThumbsDLL.rtcSpaceVar
