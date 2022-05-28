@@ -1,0 +1,67 @@
+  'Data Table: 4013C0
+  loc_403728: ILdI4 arg_C
+  loc_40372B: FStStrCopy var_8C
+  
+  loc_40372E: ILdRf var_8C
+  loc_403731: LitStr "HKEY_CLASSES_ROOT"
+  loc_403734: EqStr
+  loc_403736: BranchF loc_403744
+  loc_403739: LitI4 -2147483648
+  loc_40373E: FStR4 var_88
+  loc_403741: Branch loc_4037C5
+  loc_403744: End If
+
+  loc_403744: ILdRf var_8C
+  loc_403747: LitStr "HKEY_CURRENT_USER"
+  loc_40374A: EqStr
+  loc_40374C: BranchF loc_40375A
+  loc_40374F: LitI4 -2147483647
+  loc_403754: FStR4 var_88
+  loc_403757: Branch loc_4037C5
+  loc_40375A: End If
+
+  loc_40375A: ILdRf var_8C
+  loc_40375D: LitStr "HKEY_LOCAL_MACHINE"
+  loc_403760: EqStr
+  loc_403762: BranchF loc_403770
+  loc_403765: LitI4 -2147483646
+  loc_40376A: FStR4 var_88
+  loc_40376D: Branch loc_4037C5
+  loc_403770: End If
+
+  loc_403770: ILdRf var_8C
+  loc_403773: LitStr "HKEY_USERS"
+  loc_403776: EqStr
+  loc_403778: BranchF loc_403786
+  loc_40377B: LitI4 -2147483645
+  loc_403780: FStR4 var_88
+  loc_403783: Branch loc_4037C5
+  loc_403786: End If
+
+  loc_403786: ILdRf var_8C
+  loc_403789: LitStr "HKEY_PERFORMANCE_DATA"
+  loc_40378C: EqStr
+  loc_40378E: BranchF loc_40379C
+  loc_403791: LitI4 -2147483644
+  loc_403796: FStR4 var_88
+  loc_403799: Branch loc_4037C5
+  loc_40379C: End If
+
+  loc_40379C: ILdRf var_8C
+  loc_40379F: LitStr "HKEY_CURRENT_CONFIG"
+  loc_4037A2: EqStr
+  loc_4037A4: BranchF loc_4037B2
+  loc_4037A7: LitI4 -2147483643
+  loc_4037AC: FStR4 var_88
+  loc_4037AF: Branch loc_4037C5
+  loc_4037B2: End If
+
+  loc_4037B2: ILdRf var_8C
+  loc_4037B5: LitStr "HKEY_DYN_DATA"
+  loc_4037B8: EqStr
+  loc_4037BA: BranchF loc_4037C5
+  loc_4037BD: LitI4 -2147483642 ; -1
+  loc_4037C2: FStR4 var_88
+
+  loc_4037C5: End If
+  loc_4037C5: ExitProc

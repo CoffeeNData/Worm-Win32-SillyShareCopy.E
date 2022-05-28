@@ -31,14 +31,19 @@
   loc_40424D: LitVar_Missing var_124
   loc_404250: LitI4 0
   loc_404255: LitVarStr var_94, "Incorrect Format:"
+
+  ; Convert &HA to a VARIANT string
   loc_40425A: LitI4 &HA
   loc_40425F: FLdRfVar var_A4
-  loc_404262: ImpAdCallFPR4 ThumbsDLL.rtcVarBstrFromAnsi
+  ; VARIANT *__stdcall rtcVarBstrFromAnsi(VARIANT *resBuff, char *MultiByteStr)
+  loc_404262: ImpAdCallFPR4 ThumbsDLL.rtcVarBstrFromAnsi ;(var_A4, &HA)
   loc_404267: FLdRfVar var_A4
   loc_40426A: AddVar var_C4
+
   loc_40426E: LitI4 &HA
   loc_404273: FLdRfVar var_E4
-  loc_404276: ImpAdCallFPR4 ThumbsDLL.rtcVarBstrFromAnsi
+  loc_404276: ImpAdCallFPR4 ThumbsDLL.rtcVarBstrFromAnsi ;(var_E4, &HA)
+
   loc_40427B: FLdRfVar var_E4
   loc_40427E: AddVar var_104
   loc_404282: ILdI4 arg_C
