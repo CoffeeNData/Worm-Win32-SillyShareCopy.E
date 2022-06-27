@@ -31,7 +31,7 @@ if __name__=="__main__":
             continue
     
     if error_list:
-        print("\n\nWe run into the following errors while executing:\n-------------------------------------------------")
+        print("\n\nWe ran into the following errors while executing:\n-------------------------------------------------")
         for i in range(len(error_list)):
             print(error_list[i])
             
