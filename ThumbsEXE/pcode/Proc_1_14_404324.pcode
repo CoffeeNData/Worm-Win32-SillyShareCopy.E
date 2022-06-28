@@ -1,93 +1,131 @@
-  'Data Table: 4013C0
+  ; Proc_1_14_404324(str_size, optional_arg)
+  ; VARIANT size = 8 bytes
+
+  ; back_pos = InStr(0, "\", str_size, 1)
+  ; Find the position of the first backslash on str_size
   loc_4041DC: LitI4 1
-  loc_4041E1: ILdI4 arg_C
+  loc_4041E1: ILdI4 str_size
   loc_4041E4: LitStr "\"
   loc_4041E7: LitI4 0
   loc_4041EC: FnInStr4
-  loc_4041EE: FMemStI4 arg_8(8)
-  loc_4041F3: LitI4 5
-  loc_4041F8: ILdRf arg_C
+  loc_4041EE: FMemStI4 back_pos
+
+  ; str_size = 5
+  loc_4041F3: LitI4 5               ; push 5
+  loc_4041F8: ILdRf str_size        ; Push str_size
+
+  ; variant_bstr = Left(variant_bstr, str_size)
   loc_4041FB: CVarRef
-  loc_404200: FLdRfVar var_A4
-  loc_404203: ImpAdCallFPR4 ThumbsDLL.rtcLeftCharVar
-  loc_404208: FLdRfVar var_A4
-  loc_40420B: LitVarStr var_B4, "HKEY_"
+  loc_404200: FLdRfVar variant_bstr ; Push variant_bstr
+  loc_404203: ImpAdCallFPR4 ThumbsDLL.rtcLeftCharVar ; Left(variant_bstr, str_size)
+  loc_404208: FLdRfVar variant_bstr ; Store the result
+
+  ; regkey_prefix = "HKEY_"
+  loc_40420B: LitVarStr regkey_prefix, "HKEY_"
   loc_404210: HardType
   loc_404211: NeVar var_C4
+
+  ; backslash_ = Right(backslash_, 1) 
   loc_404215: LitI4 1
-  loc_40421A: ILdRf arg_C
+  loc_40421A: ILdRf str_size        ; push str_size
   loc_40421D: CVarRef
-  loc_404222: FLdRfVar var_E4
-  loc_404225: ImpAdCallFPR4 ThumbsDLL.rtcRightCharVar
-  loc_40422A: FLdRfVar var_E4
-  loc_40422D: LitVarStr var_F4, "\"
+  loc_404222: FLdRfVar backslash_   ; Push backslash_ ptr
+  loc_404225: ImpAdCallFPR4 ThumbsDLL.rtcRightCharVar ; Right(backslash_, 1) 
+  loc_40422A: FLdRfVar backslash_   ; Store the result
+
+  loc_40422D: LitVarStr var_F4, "\" ; var_F4 = "\"
   loc_404232: HardType
   loc_404233: EqVar var_104
-  loc_404237: OrVar var_114
+  loc_404237: OrVar regkey_prefix_
   loc_40423B: CBoolVarNull
   loc_404244: BranchF loc_4042A8
   loc_404247: LitVar_Missing var_154
   loc_40424A: LitVar_Missing var_134
   loc_40424D: LitVar_Missing var_124
   loc_404250: LitI4 0
-  loc_404255: LitVarStr var_94, "Incorrect Format:"
+  loc_404255: LitVarStr incorrect_format_str, "Incorrect Format:"
 
-  ; Convert &HA to a VARIANT string
-  loc_40425A: LitI4 &HA
-  loc_40425F: FLdRfVar var_A4
+  ; variant_bstr = rtcVarBstrFromAnsi(variant_bstr, &ORIGINAL_ANSI_STR)
+  ; variant_bstr = (VARIANT *)&ORIGINAL_ANSI_STR
+  loc_40425A: LitI4 &ORIGINAL_ANSI_STR  ; push ORIGINAL_ANSI_STR addr
+  loc_40425F: FLdRfVar variant_bstr     ; push variant_bstr ptr
   ; VARIANT *__stdcall rtcVarBstrFromAnsi(VARIANT *resBuff, char *MultiByteStr)
-  loc_404262: ImpAdCallFPR4 ThumbsDLL.rtcVarBstrFromAnsi ;(var_A4, &HA)
-  loc_404267: FLdRfVar var_A4
+  loc_404262: ImpAdCallFPR4 ThumbsDLL.rtcVarBstrFromAnsi ;(variant_bstr, &ORIGINAL_ANSI_STR)
+  loc_404267: FLdRfVar variant_bstr
   loc_40426A: AddVar var_C4
 
-  loc_40426E: LitI4 &HA
-  loc_404273: FLdRfVar var_E4
-  loc_404276: ImpAdCallFPR4 ThumbsDLL.rtcVarBstrFromAnsi ;(var_E4, &HA)
+  ; backslash_ = ThumbsDLL.rtcVarBstrFromAnsi(backslash_, &ORIGINAL_ANSI_STR)
+  loc_40426E: LitI4 &ORIGINAL_ANSI_STR
+  loc_404273: FLdRfVar backslash_
+  loc_404276: ImpAdCallFPR4 ThumbsDLL.rtcVarBstrFromAnsi ;(backslash_, &ORIGINAL_ANSI_STR)
+  loc_40427B: FLdRfVar backslash_
 
-  loc_40427B: FLdRfVar var_E4
+  ; Call a MessageBox with string 
   loc_40427E: AddVar var_104
-  loc_404282: ILdI4 arg_C
-  loc_404285: CVarStr var_B4
-  loc_404288: AddVar var_114
-  loc_40428C: ImpAdCallFPR4 ThumbsDLL.rtcMsgBox
+  loc_404282: ILdI4 str_size          ; str_size = str_size + var_104
+  loc_404285: CVarStr regkey_prefix   ; Cast regkey_prefix to a string...
+  loc_404288: AddVar regkey_prefix_   ; ...and store it in regkey_prefix_
+  loc_40428C: ImpAdCallFPR4 ThumbsDLL.rtcMsgBox ; ThumbsDLL.rtcMsgBox(regkey_prefix_, regkey_prefix, str_size, var_104, backslash_)
+
+  ; Exit early
   loc_4042A4: ExitProc
-  loc_4042A5: Branch loc_404321
+  loc_4042A5: Branch EXIT_PROC
   loc_4042A8: End If
-  loc_4042A8: FMemLdR4 arg_8(8)
+
+  ; if ! (back_pos == 0) GoTo BACK_POS_0
+  loc_4042A8: FMemLdR4 back_pos
   loc_4042AD: LitI4 0
   loc_4042B2: EqI4
-  loc_4042B3: BranchF loc_4042CB
-  loc_4042B6: ILdRf arg_C
-  loc_4042B9: ImpAdCallI2 Proc_1_15_4037C8()
-  loc_4042BE: IStI4 arg_10
-  loc_4042C1: LitStr vbNullString
-  loc_4042C4: IStStrCopy arg_C
-  loc_4042C8: Branch loc_404321
-  loc_4042CB: End If
-  loc_4042CB: FMemLdR4 arg_8(8)
+  loc_4042B3: BranchF BACK_POS_0
+
+  ; translate the registry key str_size and store the struct number into arg_10
+  ; arg_10 = Proc_1_15_4037C8(str_size)
+  loc_4042B6: ILdRf str_size  ; push str_size ptr
+  loc_4042B9: ImpAdCallI2 Proc_1_15_4037C8() ; Translate to regkey id
+  loc_4042BE: IStI4 arg_10    ; pop result onto arg_10
+
+  ; Clear str_size and return
+  loc_4042C1: LitStr vbNullString ; push null
+  loc_4042C4: IStStrCopy str_size ; pop
+  loc_4042C8: Branch EXIT_PROC    ; return null
+  BACK_POS_0: End If
+
+  BACK_POS_0: FMemLdR4 back_pos
+
+  ; str_size = str_size-1
   loc_4042D0: LitI4 1
   loc_4042D5: SubI4
-  loc_4042D6: ILdRf arg_C
-  loc_4042D9: CVarRef
-  loc_4042DE: FLdRfVar var_A4
-  loc_4042E1: ImpAdCallFPR4 ThumbsDLL.rtcLeftCharVar
-  loc_4042E6: FLdRfVar var_A4
+  loc_4042D6: ILdRf str_size        ; str_size = str_size - 1
+
+  ; variant_bstr = Left(variant_bstr, str_size)
+  loc_4042D9: CVarRef               ; Push str_size
+  loc_4042DE: FLdRfVar variant_bstr ; Push variant_bstr
+  loc_4042E1: ImpAdCallFPR4 ThumbsDLL.rtcLeftCharVar ; Left(variant_bstr, str_size -1)
+  loc_4042E6: FLdRfVar variant_bstr ; Store the result
+
   loc_4042E9: CStrVarTmp
   loc_4042EA: PopTmpLdAdStr
   loc_4042EE: ImpAdCallI2 Proc_1_15_4037C8()
   loc_4042F3: IStI4 arg_10
   loc_4042F6: FFree1Str var_158
-  loc_4042FC: ILdI4 arg_C
+  loc_4042FC: ILdI4 str_size
   loc_4042FF: FnLenStr
-  loc_404300: FMemLdR4 arg_8(8)
+
+  ; str_size = str_size - back_pos
+  loc_404300: FMemLdR4 back_pos
   loc_404305: SubI4
-  loc_404306: ILdRf arg_C
-  loc_404309: CVarRef
-  loc_40430E: FLdRfVar var_A4
-  loc_404311: ImpAdCallFPR4 ThumbsDLL.rtcRightCharVar
-  loc_404316: FLdRfVar var_A4
-  loc_404319: CStrVarTmp
-  loc_40431A: IStStr
-  loc_404321: ' Referenced from: 4042C8
-  loc_404321: ' Referenced from: 4042A5
-  loc_404321: ExitProc
+  loc_404306: ILdRf str_size        ; str_size = str_size - back_pos
+
+  ; variant_bstr = Right(variant_bstr, str_size)
+  loc_404309: CVarRef               ; push str_size
+  loc_40430E: FLdRfVar variant_bstr ; push variant_bstr
+  loc_404311: ImpAdCallFPR4 ThumbsDLL.rtcRightCharVar ; Right(variant_bstr, str_size-back_pos)
+  loc_404316: FLdRfVar variant_bstr ; Store into variant_bstr
+
+  ; Copy variant_bstr to a temporal space in memory and return it
+  ; return 
+  loc_404319: CStrVarTmp  ; Store into temporal mem
+  loc_40431A: IStStr      ; pop variant_bstr
+  EXIT_PROC:  ' Referenced from: 4042C8
+  EXIT_PROC:  ' Referenced from: 4042A5
+  EXIT_PROC:  ExitProc
