@@ -3,13 +3,13 @@ Public Sub Proc_1_7_40529C(res_arg, second_arg)
   Dim var_CC As Variant
   Dim var_B4 As Variant
 
-  ' Need to reverse/deobfuscate the following:
+  ' Need to understand the following:
   ' [] Proc_1_14_404324
   ' [] Proc_1_16_403998
-  ' [] ThumbsDLL.rtcSpaceVar
-  ' [] ThumbsDLL.rtcTrimVar
-  ' [] ThumbsDLL.rtcLeftCharVar
-  ' [] ThumbsDLL.rtcMsgBox
+  ' [x] ThumbsDLL.rtcSpaceVar
+  ' [x] ThumbsDLL.rtcTrimVar
+  ' [] ThumbsDLL.rtcLeftCharVar <- IDA
+  ' [x] ThumbsDLL.rtcMsgBox
 
   loc_4050B7: res_arg_cpy = res_arg
   loc_4050C5: Me(20) = 0
